@@ -1,0 +1,1892 @@
+.ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button{
+font-family: "Times New Roman", Times, serif;
+}
+
+.proj_maxido_tal_kital_uj{
+
+margin:15px 5px 5px 5px;
+padding:5px 10px;
+color:#000;
+width:300px;
+background-color:#eee;/*#f73d00 ed9132*/
+
+BORDER:#4588B3 1px solid;
+-moz-box-shadow: 1px 1px 5px #000;
+-webkit-box-shadow: 1px 1px 5px #000; 
+box-shadow: 1px 1px 5px #000;
+/*border-radius: 5px;*/
+border-radius:5px;
+}
+
+
+.projekt_max_ido{
+width:60px;
+height:18px;
+/*p1adding:0px;*/
+padding-left:5px;
+margin:0px;/*1px*/
+margin-top:0px;
+font-size:16px;
+border-radius:5px;
+
+/*
+pointer-events:none;
+ user-select : none;
+    -moz-user-select : none;
+    -webkit-user-select : none;
+	*/
+}
+
+.projekt_max_ido.ui-spinner-input{
+font-size:16px;
+/*w1idth:55px;
+h1eight:18px;*/
+/*padding:0px 5px;*/
+margin:0px;/*1px*/
+
+/*font-family:Helvetica,Arial,sans-serif;*/
+font-family: "Times New Roman", Times, serif;
+ /*o1utline: none;*/
+
+
+/*padding-left: 5px;
+padding-right: 0px;*/
+BORDER:#4588B3 1px solid;
+-moz-box-shadow: 1px 1px 1px #000;
+-webkit-box-shadow: 1px 1px 1px #000; 
+box-shadow: 1px 1px 1px #000;
+border-radius: 5px;
+
+}
+
+
+.input_time_dis{
+width:60px;
+height:21px;
+/*p1adding:0px;*/
+padding-left:5px;
+margin:0px;/*1px*/
+margin-top:0px;
+font-size:16px;
+border-radius:5px;
+
+pointer-events:none;
+ 
+    -moz-user-select : none;
+    -webkit-user-select : none;
+user-select : none;	
+}
+
+.input_time{
+/*width:35px;*/
+width:60px;
+height:16px;
+/*p1adding:0px;*/
+padding-left:5px;
+margin:0px;/*1px*/
+margin-top:0px;
+font-size:16px;
+border-radius:5px;
+}
+
+
+/*.ui-button.ui-widget.ui-spinner-input {*/
+/*.ui-widget input{*/
+.input_time.ui-spinner-input{
+font-size:16px;
+/*w1idth:55px;
+h1eight:18px;*/
+/*padding:0px 5px;*/
+margin:0px;/*1px*/
+
+/*font-family:Helvetica,Arial,sans-serif;*/
+font-family: "Times New Roman", Times, serif;
+ /*o1utline: none;*/
+
+
+/*padding-left: 5px;
+padding-right: 0px;*/
+BORDER:#4588B3 1px solid;
+-moz-box-shadow: 1px 1px 1px #000;
+-webkit-box-shadow: 1px 1px 1px #000; 
+box-shadow: 1px 1px 1px #000;
+border-radius: 5px;
+
+}
+
+.ui-button.ui-widget.ui-spinner-button.ui-spinner-up {
+  width: 20px;
+  margin-top:1px;/*V1.049*/
+  /*d1isplay:none;*/
+ /* h1eight: 14px;*/
+  /*b1order: 1px solid black;*/
+}
+
+.ui-button.ui-widget.ui-spinner-button.ui-spinner-down {
+  width: 20px;
+  margin-bottom:1px;/*V1.049*/
+  /*d1isplay:none;*/
+  /*h1eight: 14px;*/
+  /*b1order: 1px solid black;*/
+}
+
+.ui-widget.ui-widget-content{
+ border:0px;
+}
+
+.ui-spinner.ui-corner-all.ui-widget.ui-widget-content{
+ border:0px;
+ padding:0px;
+
+margin-top:0px;
+/*t1op:0px;*/
+-moz-box-shadow: 1px 1px 1px #000; 
+-webkit-box-shadow: 1px 1px 1px #000; 
+box-shadow: 1px 1px 1px #000; 
+border-radius: 5px;
+}
+
+.ui-datepicker select.ui-datepicker-year{
+width:75px;
+margin-right:5px
+}
+
+/*Szeptember nem fért ki*/
+.ui-datepicker select.ui-datepicker-month{
+/*w1idth:58%;*/
+width:125px;
+}
+
+/* jQuery UI Datepicker moving pixels fix */
+table.ui-datepicker-calendar {border-collapse: separate;}
+.ui-datepicker-calendar td {border: 1px solid transparent;}
+
+/* jQuery UI Datepicker hide datepicker helper */
+#ui-datepicker-div {display:none;}
+
+/* jQuery UI Datepicker emphasis on selected dates */
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+	background: #743620 none;
+	color: white;
+}
+/*Mulidata vége..*/
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor{
+/*padding: .5em 1em;*/
+padding: .1em 0.5em;
+float:none;/*IPAD előtt*/
+}
+
+.ui-tabs .ui-tabs-nav li a{
+font-size:20px !important;
+font-family: "Times New Roman", Times, serif;
+}
+
+.ui-tabs-anchor:active, .ui-tabs-anchor:focus{
+     outline:none;
+}
+
+/*
+.u1-dialog-overlay {
+background: #000;
+opacity: .8;
+z-index: 400;
+}*/
+
+.ui-dialog .ui-corner-all .ui-widget .ui-widget-content .ui-front .ui-draggable .ui-resizable {
+	/*width:4000px;*/
+	height:400px;
+}
+
+.ui-tabs .ui-tabs-panel{/*Tabs belső színe*/
+/*background-color: #F2E2CB;*/
+background-color: #fafafa;
+/*background-color: #f8f8f8;*/
+/*background-color: #e0e0e0;*/
+}
+
+#tabs_fo{
+display:none;
+max-width:1800px;
+margin:0 auto;
+}
+
+.ui-tooltip{
+font-family: "Times New Roman", Times, serif;
+font-size:16px;
+border:0px solid #333;
+/*background-color:#DBDBDB;
+background-color:red;*/
+/*b1ackground: #DBDBDB 100%;
+b1ackground: #EAEAEA 100%;*/
+background: #EDEDED 100%;
+/*background: #CCC url(image/hatter4k3.jpg) top repeat-x;*/
+padding:5px;
+position: absolute;
+z-index: 1200;
+max-width: 860px;/*500px*/
+/*-webkit-box-shadow: 5px  5px  5px #565656;*//* Safari, Chrome */
+/*box-shadow: 5px 5px 5px #565656;*//* CSS3 */
+/*-moz-box-shadow: 5px 5px 5px #565656;*//* Firefox */
+-webkit-box-shadow:0 0 10px #000;
+-moz-box-shadow:0 0 10px #000;
+box-shadow:0 0 10px #000;
+border-radius:5px;
+
+}
+
+/*dialog egyedi eleje*/
+.ui-widget-overlay {
+ /*1opacity: .70 !important;*//* Make sure to change both of these, as IE only sees the second one */
+  /*1filter: Alpha(Opacity=70) !important;*/
+
+  background: rgb(50, 50, 50) !important; /* This will make it darker */
+  /*p1osition:fixed;*/
+display:none;height:100%;width:100%;
+
+/*position:absolute;*/
+
+position:fixed;
+opacity:0.7;
+filter:Alpha(Opacity=70);
+
+z-index:1;
+}
+.ui-dialog-titlebar { height: .1em; }
+
+.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix{
+    /*f1ont-size:8px;*/
+	height:20px;
+}
+
+/*Kulcsszó miatt kivettem, túl széles volt.
+mi1n-width: 260px;/*360 de nem volt bekapcsolva*/
+/*.ui-widget-content {
+}*/
+
+.ui-dialog 
+{
+position:fixed;
+min-width:350px;
+max-width:95%;
+}
+
+
+.ui-dialog .ui-dialog-buttonpane{
+background: #fff;
+}
+
+.ui-dialog .ui-dialog-title{
+margin:0px;	
+}
+
+/*dialog egyedi eleje*/
+
+
+
+
+html{
+/*background-image: url(image/hatter4.jpg);*/
+
+/*background-color:#FFC014;*/
+/*https://cssgradient.io/*/
+
+/*
+background: rgb(172,172,172);
+background: -moz-radial-gradient(circle, rgba(172,172,172,0.7931547619047619) 0%, rgba(247,167,167,0) 100%);
+background: -webkit-radial-gradient(circle, rgba(172,172,172,0.7931547619047619) 0%, rgba(247,167,167,0) 100%);
+background: radial-gradient(circle, rgba(172,172,172,0.7931547619047619) 0%, rgba(247,167,167,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#acacac",endColorstr="#f7a7a7",GradientType=1);
+*/
+
+background-color:#E0E0E0;
+background-color:#d9d9d9;
+
+/*margin-left:10px;*/
+/*pa1dding:0px;*/
+margin:0px;
+font-size:16px;
+font-family:Helvetica,Arial,sans-serif;/*"Times New Roman",Times,serif*/
+font-family: "Times New Roman", Times, serif;
+/*text-align:center;*/
+/*
+scrollbar-face-color: red;
+scrollbar-shadow-color: #4b4b4b;
+scrollbar-highlight-color:#d6d9dc;
+scrollbar-3dlight-color: #d6d9dc;
+scrollbar-darkshadow-color: #1c1c1c;
+scrollbar-track-color:white;
+scrollbar-arrow-color:#340113
+*/
+ /*o1verflow-y:scroll;*/
+ /*touch-action:none;*//*This will disable browser handling of all panning and zooming gestures*/
+}
+
+body{
+font-family:Helvetica,Arial,sans-serif;/*"Times New Roman",Times,serif*/
+font-family: "Times New Roman", Times, serif;
+/*background-image: url(../image/hatter4.jpg);*/
+background-repeat: repeat-x;
+/*background-color: #4588B3;*/
+/*background-color: #63EF9C;*/
+/*background-color: #fff;*/
+ overflow-y: scroll;
+}
+
+
+.idoszak_div{
+/*b1ackground-color: #EEE0CD;*/
+/*w1idth:400px;*//*300 pc tab nélkül*/
+padding:0px;/*10px*/
+border-radius: 25px;
+/*d1isplay:inline;
+m1argin:0 auto;*/
+}
+
+.fo_div_notab{
+ display:none;
+ margin-right:auto;
+ margin-left:auto;
+ max-width:1000px;
+ background-color:#FAFAFA;
+ padding:10px;
+ margin-top:5px;
+ 
+ border-radius: 15px;
+-moz-box-shadow: 1px 1px 5px #000; /* Firefox */
+-webkit-box-shadow: 1px 1px 5px #000; /* Safari, Chrome */
+box-shadow: 1px 1px 5px #000; /* CSS3 */
+
+}
+
+.jovahagy_ki_sel, .jovahagy_ki_sel optgroup{
+height:24px;
+font-size:18px;
+/*font-size:2em;*/
+font-family: "Times New Roman", Times, serif;
+background-color: #fff;
+border: 1px solid #aaa;
+border-radius: 4px;
+margin-top:15px;
+margin-bottom:10px;
+cursor:pointer;
+}
+
+.jovahagy_ki_sel:disabled{
+background-color:#eee;
+color:#A4957D;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single{
+background-color:#eee;
+}
+
+.fo_table_ki_sel{
+height:26px;
+font-size:18px;
+/*font-size:2em;*/
+font-family: "Times New Roman", Times, serif;
+background-color: #fff;
+border: 1px solid #aaa;
+border-radius: 4px;
+/*margin-top:15px;
+margin-bottom:10px;*/
+}
+
+.fo_table_ki_sel_option{
+font-family: "Times New Roman", Times, serif;
+font-size:18px;
+padding: 6px;
+background-color:#fff;
+color:#000;
+}
+
+.fo_table_ki_nev_sarga{
+background-color: #FF4F78;
+color: #fff;
+padding: 0px 5px;
+border-radius: 4px;
+}
+
+.fo_table_ki_sel_sarga{
+height:26px;
+font-size:18px;
+/*font-size:2em;*/
+font-family: "Times New Roman", Times, serif;
+background-color: #FF4F78;
+color: #fff;
+border: 1px solid #aaa;
+border-radius: 4px;
+/*margin-top:15px;
+margin-bottom:10px;*/
+}
+
+.fo_table_ki_sel_option_sarga{
+font-family: "Times New Roman", Times, serif;
+font-size:18px;
+padding: 6px;
+background-color: #FF4F78;
+color:#fff;
+}
+
+
+.table_emre_div {
+/*overflow-x: scroll;
+width:700px;
+height:100px;*/
+
+max-width:900px;
+max-height:700px;
+
+margin-left: auto;
+ margin-right: auto;
+overflow-x: scroll
+
+}
+/*
+.scroll1_css {
+overflow-x:auto;
+position:sticky;
+width:auto;
+width:600px;
+  margin-left: 50px;
+  margin-left: 0px;
+  margin-right: 50px;
+  margin-right: 0px;
+}
+.scroll1_css div{
+    height: 1px;
+    margin: 0 1%;	
+
+}*/
+   
+.scroll1_css {
+max-width:900px;
+max-height:700px;
+
+margin-left: auto;
+ margin-right: auto;
+overflow-x: scroll
+}
+.scroll1_css div{
+    height: 1px;
+    /*margin: 0 1%;	*/
+
+}
+
+#scroll1 div {
+    height: 1px;
+    margin:0px;
+}
+
+/*
+table.info {
+    width: 98%;
+    margin: 0 1%;
+    border-collapse: collapse;
+    }
+	
+*/
+
+table.table_emre_bejovo {
+  /*font-family:Helvetica,Arial,sans-serif;*//*"Times New Roman", Times, serif*/
+  font-family: "Times New Roman", Times, serif;
+  font-size:15px;
+  /*background-color: #EEE0CD;*//*2020_09_04 kivettem*/
+  /*width: 100%;*/
+  /*height: 200px;*/
+  
+  /*white-space: nowrap;*/
+
+/*új és akkor igy nem nyúlik tovább 2020_09_04*/
+/*d1isplay:block;*/
+
+/*white-space:nowrap;*/
+
+overflow-x:auto;
+table-layout:fixed;
+
+  /*1margin-left: auto;
+  1margin-right: auto;*/
+  
+margin:0px 10px;
+/*w1idth:100%;*/
+
+/*
+-webkit-box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.25); 
+box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.25);
+*/
+}
+table.table_emre_bejovo td, table.table_emre_bejovo th {
+  /*border: 1px solid #AAAAAA;*/
+  border: 1px solid #E0E0E0;
+  border: 1px solid #D3D8C5;
+  padding: 0px 6px;/*2 4 aztán 3 volt..*/
+  /*o1verflow: hidden;*/
+  text-overflow: ellipsis;
+  
+}
+table.table_emre_bejovo thead {
+  background: #EDBE74;
+  background: -moz-linear-gradient(top, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  background: -webkit-linear-gradient(top, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  background: linear-gradient(to bottom, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  
+  background: #D8BF58;
+  background: -moz-linear-gradient(top, #f1ce97 0%, #eec482 66%, #D8BF58 100%);
+  background: -webkit-linear-gradient(top, #f1ce97 0%, #eec482 66%, #D8BF58 100%);
+  background: linear-gradient(to bottom, #f1ce97 0%, #eec482 66%, #D8BF58 100%);
+  
+  border-bottom: 2px solid #444444;
+}
+table.table_emre_bejovo thead th {
+  font-size: 15px;
+  font-weight: bold;
+  /*color: #C22A10;background: #EDBE74;
+  color: #C22A10;background: #FFC700;
+  color: #fff;background: #5897fb;
+  color: #fff;background: #001d87;
+  color: #fff;background: #1c6910;*/
+  color: #fff;background: #565656;/*Eredeti*/
+  /*border-left: 0px solid #D0E4F5;*/
+ padding: 0px 5px;
+  /*p1adding: 2px 4px;*/
+}
+
+table.table_emre_bejovo tbody tr{
+color: #000;
+/*background: #FFCA7C;*//*E5CFAE*/
+background: #FFE368;/*E5CFAE  sor színe sárga*/
+background: #f8f8f8;/*E5CFAE  sor színe*/
+background: #f4f4f4;/*E5CFAE  sor színe*/
+font-size: 15px;
+
+}
+
+table.table_emre_bejovo tr{
+ height:35px;
+}
+
+/*
+.table_emre_bejovo tr:hover {
+    background-color:#90EE90;
+}*/
+
+.table_emre_bejovo_akt_zold td{
+    background-color:#90EE90;
+}
+
+/*Akt nap sor színe*/
+.table_emre_bejovo_akt_nap td {
+    /*background-color:#00ED00;*//*zöld*/
+    background-color:#53a9fa;/*00a5ed*/
+	color:#fff;
+}
+
+/*sor színe páratlan*/
+.table_emre_bejovo_akt_nap_paratlan td {
+    background-color:#f4f4f4;
+}
+
+/*sor színe páros*/
+.table_emre_bejovo_akt_nap_paros td {
+    background-color:#E5E5E5;
+}
+
+.table_emre_bejovo_dis_nap td{/*Tiltott nap színe*/
+background-color:#808080;/*szürke*/
+/*background-color:#243d64;*//*kék*/
+color:#fff
+}
+
+table.table_emre {
+  font-family:Helvetica,Arial,sans-serif;/*"Times New Roman", Times, serif*/
+  font-family: "Times New Roman", Times, serif;
+  font-size:15px;
+  /*background-color: #EEE0CD;*//*2020_09_04 kivettem*/
+  /*width: 100%;*/
+  /*height: 200px;*/
+  /*w1hite-space: nowrap;*/
+
+/*új és akkor igy nem nyúlik tovább 2020_09_04*/
+
+/*display:block;white-space:nowrap;*/
+
+/*overflow-x:auto;*/ /*Multiselect miatt!!!*/
+
+/*table-layout:fixed;width:100%;*/
+white-space:nowrap;
+overflow-x:auto;
+
+table-layout:fixed;
+
+border-spacing: 1px 1px;
+/*w1idth: 200%;*/
+/*margin:0px;*/
+margin:1px 0px 1px;
+
+box-shadow:1px 1px 5px #000;
+}
+table.table_emre td, table.table_emre th {
+  border: 0px solid #AAAAAA;/*1px volt*/
+  padding: 2px 4px;
+  overflow: hidden; /*Multiselect miatt!!!*/
+  text-overflow: ellipsis;
+}
+table.table_emre thead {
+  background: #EDBE74;
+  background: -moz-linear-gradient(top, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  background: -webkit-linear-gradient(top, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  background: linear-gradient(to bottom, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  border-bottom: 2px solid #444444;
+}
+table.table_emre thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #C22A10;background: #EDBE74;
+  /*border-left: 0px solid #D0E4F5;*/
+ padding: 0px 2px;
+  /*p1adding: 2px 4px;*/
+}
+
+/*border-left: none;*/
+/*table.table_emre thead th:first-child {
+}*/
+
+table.table_emre tbody tr{
+color: #000;
+background: #FFCA7C;/*E5CFAE*/
+font-size: 15px;
+height:27px;
+}
+
+table.table_emre tr{
+ height:10px;
+}
+
+.table_emre tr:hover {
+    background-color:#90EE90;
+	/*text-decoration: underline;*/
+}
+
+.table_emre_tr_kijelolve td{
+    background-color:blue;
+	color:#fff
+	/*text-decoration: underline;*/
+}
+
+
+
+
+.loading-results{
+display:none;
+}
+
+.div_szabi{
+font-weight:bold;
+/*background-color:#808080;*/
+width:100%;
+height:35px;
+text-align:center;
+line-height:35px;
+}
+
+.focim{
+font-size:38px;
+font-family:Helvetica,Arial,sans-serif;/*"Times New Roman", Times, serif*/
+font-family: "Times New Roman", Times, serif;
+font-weight:bold;
+text-shadow:5px 5px 5px #033cd2;
+color:#fff;
+}
+
+.jovahagy_szur_str{
+font-size:18px;
+font-weight:bold;
+color:#000;
+}
+
+.table_focim{
+width:100%;
+}
+
+.table_focim TD{
+/*width:33%;*/
+white-space:nowrap;
+vertical-align:top;
+text-align:center
+}
+
+/*
+.table_focim td:nth-child(1){
+text-align:left;
+}
+.table_focim td:nth-child(2){
+text-align:center;
+}
+.table_focim td:nth-child(3){
+text-align:right;
+}
+*/
+
+
+.stat_select2{
+height: 23px !important;
+border: 1px solid #AAAAAA;
+border-radius:5px;
+padding-left:5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+/*Kis jobb oldali nyíl*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+/*Kis jobb oldali nyíl*/
+  background-image: url("images/select2nyil2.png");
+  background-repeat: no-repeat;
+  /*background-position: 295px 9px;*/
+  background-position:right 6.5px center;
+background-size: 8px;
+background-color:#fff;
+font-family: "Times New Roman", Times, serif;
+border-radius:5px;
+cursor:pointer;
+line-height:23px;
+}
+
+.stat_select2::-ms-expand {
+    display: none;
+}
+
+
+.proj_inp{
+width:300px;
+}
+
+.sel_proj{
+/*1display:inline;*/
+/*width:150px;*/
+/*width:250px;*//*V1.030-ig*/
+/*width:400px;*/
+width:379px;
+height:23px;
+line-height:23px;
+margin:0px;
+margin-top:0px;
+border: 1px solid #aaa;
+padding-left: 5px;
+padding-right:10px;
+text-overflow: ellipsis;
+/*l1ine-height: 24px !important;*/
+font-size:15px;
+    box-sizing: border-box;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+/*Kis jobb oldali nyíl*/
+  background-image: url("images/select2nyil2.png");
+  background-repeat: no-repeat;
+  /*background-position: 295px 9px;*/
+  background-position:right 6.5px center;
+background-size: 8px;
+background-color:#fff;
+font-family: "Times New Roman", Times, serif;
+border-radius:5px;
+}
+
+.sel_proj::-ms-expand {
+    display: none;
+}
+
+.proj_span_kit{
+margin-top:2px;
+padding:0px;
+display:block;
+}
+
+.proj_span{
+margin-top:5px;
+padding:0px;
+/*display:block;*/
+display:flex;
+/*b1ackground-color:#808080;*/
+/*height:30px;*/
+height:30px;
+vertical-align:middle;
+}
+
+.proj_span_b{
+float:left;
+display:inline;
+white-space:nowrap
+}
+
+.select2_proj_megj_img{
+width:19px;
+height:19px;
+margin-left:5px;
+cursor:pointer;
+display:inline-block;
+vertical-align:top;
+}
+
+.proj_egysor_megj{
+display:block;
+margin-top:10px;
+height:150px;
+width:550px;
+}
+
+.vegdatedel{
+cursor:pointer;
+margin-left:2px;
+}
+
+.tabordh{
+cursor:pointer;
+visibility:hidden;
+}
+
+.linkm_tooltip{
+cursor:pointer;
+}
+
+.linkimg_tooltip{
+cursor:pointer;
+vertical-align:bottom;
+}
+
+.link_cktavollet{
+cursor:pointer;	
+}
+
+.linknotip{
+cursor:pointer;
+}
+
+.link,.ui-widget-content a{
+	cursor:pointer;
+	color:blue;
+	text-decoration: none;
+}
+.link:hover,.ui-widget-content a:hover{
+    text-decoration: underline;
+}
+
+.link_pir{
+cursor:pointer;
+color:red;
+}
+
+.link_pir:hover {
+text-decoration:underline;
+}
+
+.link_vas{
+	cursor:pointer;
+	color:blue;
+	font-weight:bold;
+}
+.link_vas:hover {
+    text-decoration: underline;
+}
+
+.link_pir_vas{
+	cursor:pointer;
+	color:red;
+	font-weight:bold;
+}
+.link_pir_vas:hover {
+    text-decoration: underline;
+}
+
+.link_fek_vas{
+	cursor:pointer;
+	color:#000;
+	font-weight:bold;
+}
+.link_fek_vas:hover {
+    text-decoration: underline;
+}
+
+.fek_vas{
+	color:#000;
+	font-weight:bold;
+}
+
+.pir_vas{
+	color:red;
+	font-weight:bold;
+}
+
+.pir_vas_tooltip{
+	color:red;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+.pir_vas_hat_feher{
+	color:red;
+	font-weight:bold;
+	background:#fff;
+}
+
+.pir_hat_red{
+	color:#fff;
+	background:red;
+}
+
+.ad_info_img{
+cursor:pointer;
+display:inline;
+width:18px;
+}
+
+.pdf_ikon_rogz{
+margin-left:10px;
+cursor:pointer;
+width:19px;
+height:18px;
+}
+
+.refresh2{
+display:none;
+cursor:pointer;
+width:14px;
+height:14px;
+}
+
+.xlsx_ikon_rogz{
+margin-left:10px;
+cursor:pointer;
+box-shadow: 1px 1px 5px #4eae43;
+background-color:#fff;
+vertical-align:top;
+width:54px;
+height:20px;
+}
+
+.rogzit_megj_textarea{
+/*display: inline;*/
+width:95%;
+/*height:100%;*/
+height:36px;
+margin:2px 5px;
+
+    -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+       -moz-box-sizing: border-box; /* FF1+ */
+            box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
+}
+
+.statusbar_log {
+display:block;
+/*p1osition: relative;
+b1ottom: 30; l1eft: 0;*/
+
+
+color:#fff;
+color:#000;
+border: 0px solid #c3c3c3;
+
+/*w1idth: 700px;*/
+/*margin:0 auto;*/
+text-align:center;
+font-weight:b1old;
+
+top: 50%;
+left: 50%;
+height:45px;
+width:600px;
+padding:5px;
+margin: 10px auto 0px;
+/*
+z-index:1;
+background-color: #4588b3;
+border-bottom: none;
+*/
+}
+
+
+
+
+
+
+select{
+/*w1idth:264px;*/
+font-family:Helvetica,Arial,sans-serif;/*"Times New Roman",Times,serif*/
+font-family: "Times New Roman", Times, serif;
+border-radius:5px;
+}
+
+select option:disabled{
+color:#B7B7B7;
+}
+
+input[type="text"]{
+font-size:16px;
+/*width:250px;*/
+/*height:18px;*/
+padding-left:5px;
+padding-right:5px;
+border-radius:5px;
+
+}
+
+
+
+input[type="submit"]{
+font-size:16px;
+}
+
+/*input[type="submit"]*/
+.submit_a{
+/*f1ont-family:Helvetica,Arial,sans-serif;*//*"Times New Roman"*/
+font-family: "Times New Roman", Times, serif;
+BORDER:#4588B3 1px solid;
+background:#7787FF;
+color:#ffffff;
+border-radius: 15px;
+/*height:25px;*/
+/*h1eight:22px;*/
+padding:1px 10px;
+margin-top:1px;
+font-size:16px;
+-moz-box-shadow: 1px 1px 5px #000; /* Firefox */
+-webkit-box-shadow: 1px 1px 5px #000; /* Safari, Chrome */
+box-shadow: 1px 1px 5px #000; /* CSS3 */
+
+}
+
+/*input[type="submit"]:disabled*/
+.submit_a:disabled{
+/*b1ackground:#AFFCFF;*//* 93D5FF*/
+color:lightgray;
+}
+
+/*input[type="submit"]:hover:enabled, input[type="submit"]:focus:enabled*/
+.submit_a:hover:enabled,submit_a:focus:enabled{
+text-decoration:underline;
+cursor:pointer;
+background:#5E73FF
+}
+
+/*
+input[type="submit"]:focus:enabled
+{
+text-decoration:underline;
+fo1nt-weight:bold;
+}*/
+
+input[type="reset"]
+{
+font-family:Helvetica,Arial,sans-serif;/*"Times New Roman"*/
+font-family: "Times New Roman", Times, serif;
+BORDER:#4588B3 1px solid;
+background:#7787FF;
+color:white;
+border-radius: 15px;
+height:22px;
+-moz-box-shadow: 1px 1px 1px #000; /* Firefox */
+-webkit-box-shadow: 1px 1px 1px #000; /* Safari, Chrome */
+box-shadow: 1px 1px 1px #000; /* CSS3 */
+
+}
+
+input[type="reset"]:disabled
+{
+/*b1ackground:#AFFCFF;*//* 93D5FF*/
+color:lightblack;
+}
+
+input[type="reset"]:hover:enabled
+{
+text-decoration:underline;
+cursor:pointer;
+}
+
+input[type="text"],textarea
+{
+font-family:Helvetica,Arial,sans-serif;/*"Times New Roman"*/
+font-family: "Times New Roman", Times, serif;
+BORDER:#4588B3 1px solid;
+-moz-box-shadow: 1px 1px 1px #000; /* Firefox */
+-webkit-box-shadow: 1px 1px 1px #000; /* Safari, Chrome */
+box-shadow: 1px 1px 1px #000; /* CSS3 */
+
+}
+
+textarea {
+    overflow-y: auto;
+    overflow-x: auto;
+    /*height: 100px;*/
+    /*resize: none;*/ /* Remove this if you want the user to resize the textarea */
+	padding-left:5px;
+	padding-right:5px;
+	border-radius:5px;
+}
+
+input[type="password"]
+{
+font-family:Helvetica,Arial,sans-serif;/*"Times New Roman"*/
+font-family: "Times New Roman", Times, serif;
+BORDER:#4588B3 1px solid;
+-moz-box-shadow: 1px 1px 1px #000; /* Firefox */
+-webkit-box-shadow: 1px 1px 1px #000; /* Safari, Chrome */
+box-shadow: 1px 1px 1px #000; /* CSS3 */
+
+}
+
+input[type="text"]:disabled
+{
+background:#dddddd;
+}
+
+input[type="text"]:read-only
+{
+background:#dddddd;
+}
+
+input[readonly="readonly"] 
+{
+background:#dddddd;
+}
+
+input[type="text"]:focus,textarea:focus{
+color:red;
+font-weight:bold;
+}
+
+/*Vastag keret, főleg Chrome-ba szar*/
+input:focus,select:focus,textarea:focus {
+  outline-style: solid;
+  outline-width: 0px;
+}
+
+/*.ie_ne_span{
+color:#fff;
+background-color:red;
+margin-right: auto; margin-left: auto; width: 600px;
+font-size:20px;
+margin-top:10px;
+margin-bottom:10px;
+display:none;
+padding:5px;
+border-radius: 10px;
+-moz-box-shadow: 1px 1px 5px #000000; 
+-webkit-box-shadow: 1px 1px 5px #000000; 
+box-shadow: 1px 1px 5px #000000; 
+}*/
+
+input[type=text]::-ms-clear { display: none; }
+
+.divkeret_postajegy{
+	border: 0px solid black;
+	/*background-color: #e6d2b680;*/
+	background-color: #EADAC0;
+	background-color: #f1f1f1;
+	padding:10px;
+
+border-radius: 10px;
+-moz-box-shadow: 1px 1px 5px #000000; /* Firefox */
+-webkit-box-shadow: 1px 1px 5px #000000; /* Safari, Chrome */
+box-shadow: 1px 1px 5px #000000; /* CSS3 */
+}
+
+.visszakuldve_megj_div{
+/*
+w1idth: 50%;
+w1idth: 100px;
+width: fit-content;
+
+width: -moz-max-content;
+width: -webkit-max-content;
+width: -o-max-content;
+width: -ms-max-content;
+*/
+width: auto;
+
+overflow: auto;
+max-width: 1000px;
+border: 2px solid red;
+white-space: nowrap;
+display:inline-block;
+padding:5px;
+border-radius: 10px;
+-moz-box-shadow: 1px 1px 5px #000000; /* Firefox */
+-webkit-box-shadow: 1px 1px 5px #000000; /* Safari, Chrome */
+box-shadow: 1px 1px 5px #000000; /* CSS3 */
+}
+
+.select2-search input {
+    width: 100%;
+    height: auto !important;
+    min-height: 26px;
+    padding: 4px 20px 4px 5px;
+    margin: 0;
+
+    outline: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+
+    border: 1px solid #aaa;
+    border-radius: 0;
+
+    -webkit-box-shadow: none;
+            box-shadow: none;
+
+/*
+    background: #fff url('select2.png') no-repeat 100% -22px;
+    background: url('images/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #fff), color-stop(0.99, #eee));
+    background: url('images/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('images/select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    */
+	background: url('images/select2.png') no-repeat 100% -22px, linear-gradient(to bottom, #fff 85%, #eee 99%) 0 0;
+	
+}
+
+.rip_divteje{
+
+display:block;
+overflow-x:auto;
+}
+
+.stat_divteje{
+height:220px;
+display:block;
+overflow-x:auto;
+}
+
+.stat_table_bal{
+display:block;
+float:left;
+margin-right:30px;
+margin-bottom:5px;
+}
+
+.stat_divsugo{
+float:left;
+display:block;
+background-color: #f4f4f4;
+/*height:200px;*/
+/*margin-left:30px;*/
+overflow: auto;
+min-width:200px;
+max-width:700px;
+padding:5px;
+
+BORDER:#4588B3 1px solid;
+-moz-box-shadow: 1px 1px 1px #000;
+-webkit-box-shadow: 1px 1px 1px #000; 
+box-shadow: 1px 1px 1px #000;
+border-radius: 5px;
+}
+
+/*.submit2 {
+	-moz-box-shadow: 1px 1px 5px 0px #54a3f7; /
+	-webkit-box-shadow: 1px 1px 5px 0px #54a3f7; 
+	box-shadow: 1px 1px 5px 0px #54a3f7;
+	
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:5px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Times New Roman;
+	font-size:14px;
+	padding:3px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 1px #154682;
+	margin-top:2px;
+}
+*/
+
+/*
+.submit2:hover:enabled{
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+	text-decoration: underline;
+}
+*/
+
+.submit2,.ui-dialog button.submit2,::-webkit-file-upload-button,::file-selector-button {
+	/*box-shadow: 1px 1px 5px 0px #54a3f7;*/
+	/*-moz-box-shadow: 1px 1px 5px 0px #54a3f7;
+	-webkit-box-shadow: 1px 1px 5px 0px #54a3f7;
+	box-shadow: 1px 1px 5px 0px #54a3f7;*/
+	
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:5px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: "Times New Roman", Times, serif;
+	font-size:1em;
+	padding:3px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 1px #154682;
+	margin-top:2px;
+	margin-bottom:1px;
+
+/*-webkit-box-shadow:1px 1px 3px #759ae7;
+-moz-box-shadow:1px 1px 3px #759ae7;*/
+box-shadow:1px 1px 3px #759ae7;
+
+}
+
+.submit2:focus:enabled,
+.submit2:hover:enabled,.ui-dialog button.submit2:hover:enabled,::-webkit-file-upload-button:hover{
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+/*.submit2:active {*/
+.submit2:active,.ui-dialog button.submit2:active{
+	position:relative;
+	top:1px;
+}
+
+/*
+.submit2:disabled{
+color:#b6b6b6;
+-moz-box-shadow: 0px 0px 0px 0px #54a3f7; /
+-webkit-box-shadow: 0px 0px 0px 0px #54a3f7; 
+box-shadow: 0px 0px 0px 0px #54a3f7;
+}
+*/
+
+.submit2:disabled,.ui-dialog button.submit2:disabled,input[disabled]::-webkit-file-upload-button{
+/*ba1ckground:#005D8C;*//* 93D5FF*/
+/*color:lightgray;*/
+color:#b6b6b6;
+
+/*-webkit-box-shadow:1px 1px 3px #759ae7;
+-moz-box-shadow:1px 1px 3px #759ae7;*/
+box-shadow:1px 1px 3px #759ae7;
+}
+
+
+
+/*input[type="submit"]:hover:enabled, input[type="submit"]:focus:enabled*/
+.s1ubmit2:hover:enabled,submit_a:focus:enabled{
+text-decoration:underline;
+/*c1ursor:pointer;
+b1ackground:#5E73FF;*/
+}
+
+
+.submit3{
+	background: linear-gradient(to bottom, #D4E5F4 5%, #93c3ee 100%);
+	padding:2px 0px;
+	padding:3px 10px 3px 10px;
+	margin:5px 0px;
+	/*border-bottom:1px solid #eeeeee;*/
+	border-bottom:1px solid #5d9cef;
+	/*border-bottom-left-radius:1px;
+	border-bottom-right-radius:10px;*/
+	border-radius: 7px;
+	box-shadow:1px 0px 5px #208ded;
+	cursor:pointer;
+	border:1px solid #124d77;
+	font-size:17px;
+	font-family: "Times New Roman", Times, serif;
+}
+.submit3:hover{
+	background: #5390C1;
+	color:#fff;
+font-weight: bold;
+}
+.submit3:active{
+	position:relative;
+	top:1px;
+}
+
+       
+        
+.jovahagyo_ered_td{
+cursor:pointer;
+}
+
+.ui-helper-hidden-accessible{
+    display: none;
+}
+
+#stat_ered_table THEAD TH{
+cursor:pointer;
+}
+
+.tablesorter-headerAsc {
+text-decoration:underline;
+}
+.tablesorter-headerDesc {
+text-decoration:underline;
+}
+
+/*Tabs scroolbar - eleje*/
+.ui-tabs .ui-tabs-nav { /*width: 99%;*/  white-space: nowrap; overflow-x: auto;overflow-y:hidden;}
+.ui-tabs .ui-tabs-nav li {float: none; display: inline-block;margin-bottom:-5px;}
+
+/*ipad tab előtt*/
+/*.ui-tabs .ui-tabs-nav li.ui-tabs-active{margin-bottom:-6px;padding-bottom:1px}*/
+.ui-tabs .ui-tabs-nav li.ui-tabs-active{margin-bottom:-6px;padding-bottom:7px}
+
+.ui-widget-header{
+ border: 0px;/* solid #d49768;*/
+}
+/*Tabs scroolbar - vége*/
+
+#osszesen_all_ki_tooltipp tr{
+height:23px;
+font-size:14px;
+}
+
+/*#osszesen_all_ki_tooltipp tr:nth-child(odd) { background-color: #D3D8C5; }*/
+
+#osszesen_all_ki_tooltipp tr:nth-of-type(odd) { background-color: #E5E5E5; }
+
+#osszesen_all_ki_tooltipp tr:nth-of-type(even) { background-color: #F4F4F4; }
+
+.jovaok_img{
+width:24px;
+margin-left:15px;
+cursor:pointer;
+}
+
+.jovavissza_img{
+width:16px;
+margin-left:10px;
+cursor:pointer;
+}
+
+.table_emre_sima_adinfo td:first-child{
+font-weight: bold;
+}
+
+.div_rogzites_linkek{
+display:inline;
+float:right;
+font-size:18px;
+color:blue;
+cursor:pointer;
+}
+
+.div_jovahagyo_linkek{
+display:inline;
+float:right;
+font-size:18px;
+color:blue;
+cursor:pointer;
+}
+
+.span_kitolt_utmutato:hover {
+    text-decoration: underline;
+}
+
+
+
+/*.ui-widget select,.select2_ajax{*/
+.select2_ajax{
+font-size:14px;
+/*background-image: url("images/select2nyil2.png");*/
+
+
+margin:0px;
+/*margin-top:0.5px;*/
+/*margin-top:2px;*/
+margin-top:0px;
+
+/*margin-bottom:-0.5px;
+margin-bottom:0px;*/
+
+margin-bottom:0px;
+
+padding-left: 5px;
+/*padding-right:10px*/
+padding-top:0px;
+
+
+text-overflow: ellipsis;
+/*l1ine-height: 24px !important;*/
+/*font-size:15px;*/
+    box-sizing: border-box;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+/*Kis jobb oldali nyíl*/
+  background-image: url("images/select2nyil2.png");
+  background-repeat: no-repeat;
+  /*background-position: 295px 9px;*/
+  background-position:right 6.5px center;
+background-size: 8px;
+background-color:#fff;
+font-family: "Times New Roman", Times, serif;
+
+height:23px;
+line-height:23px;
+
+padding-right:20px;
+
+BORDER:1px solid #aaa;
+}
+
+/*.ui-widget select option,.select2_ajax option{*/
+.select2_ajax option{
+font-size:15px;
+}
+
+
+.select2-hidden-accessible{
+/*FIONA módosításnál csúszka..*/
+display:none;
+/*
+left:0px;
+top:0px;
+*/
+}
+
+.select2-container{
+height:23px;
+
+/*V1.049 admin művlet elcsúszás miatt*/
+/*V1.098 kivettem select3 tilte miatt
+vertical-align:bottom;
+*/
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single {
+background: #e2e2e2;
+    /*color: -internal-light-dark(graytext, rgb(170, 170, 170));
+    opacity: 0.7;*/
+}
+
+.select2-container--default .select2-selection--single{
+/*f1ont-family: "Times New Roman", Times, serif;
+f1ont-size:15px;*/
+padding:0px;
+margin:0px;
+/*margin-top:1px;*/
+margin-bottom:0px;
+border-radius:5px;
+
+}
+
+.select2-container .select2-selection--single{
+height:23px;
+/*margin-top:2px;
+margin-bottom:-0.5px;*/
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+line-height:23px;
+color:#000;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+height:23px;
+    /*margin-left: -50px;
+    margin-top: 1px;*/
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+    /*margin-left: -4.5px;
+    margin-top: -1.7px;*/
+	    margin-left: -4.3px;
+    margin-top: -3.6px;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+padding-left:5px;
+padding-right:15px;
+text-align:left;
+}
+
+.select2-dropdown{
+/*-moz-box-shadow: 1px 1px 5px #000;*//* Firefox */
+/*-webkit-box-shadow: 1px 1px 5px #000;*//* Safari, Chrome */
+box-shadow: 1px 1px 5px #000; /* CSS3 */
+}
+
+input[type="checkbox"]{
+cursor:pointer;
+accent-color: #0075FF;
+}
+
+.multi-select-button{
+/*margin-left:5px;*//*Csak itt kivettem a riport miatt*/
+/*margin-top:-8px;*/
+cursor:pointer;
+font-size:1em;
+}
+
+.multi-select-container {
+    display: inline-block;
+    position: relative;/*fixed*/
+}
+
+.multi-select-menuitem{
+cursor:pointer;
+}
+
+/*.multi-select-menuitem:hover{
+text-decoration:underline;
+}*/
+
+.multi-select-menu {
+position: fixed;/*Csak mira-hoz emre*/
+left:unset;
+top:unset;
+min-width:unset;
+margin:unset;
+margin-top:2px;
+}
+
+.multi-select-menuitem{
+font-size: 1.1em;
+font-size: 16px;
+ padding-top: 0.1em;/*összes default*/
+}
+
+#riport_table_tervteny_1,#riport_table_tervteny_2,#riport_table_nonp,#riport_table_nonp,#riport_table_teny3_2,#riport_table_teny3{
+margin-top:10px;
+display:inline-block;
+float:left;
+border-radius: 10px;
+box-shadow: 1px 1px 5px #000;
+}
+
+#riport_table_tervteny_2{
+margin-left:30px;
+}
+
+#riport_table_tervteny_1 th,#riport_table_tervteny_2 th,#riport_table_nonp th,#riport_table_nonp th,#riport_table_teny3_2 th,#riport_table_teny3 th{
+font-size:16px;
+font-weight:bold;
+text-align:left;
+height:25px;
+}
+
+
+.select2-selection__rendered li {
+  margin: 6px 0px 4px;
+}
+
+/*
+.multi-select-button{
+margin-left:5px;
+margin-top:-8px;
+}
+*/
+
+.multi-select-menuitem{
+cursor:pointer;
+border-radius:5px;
+}
+
+.multi-select-menuitems{
+padding-left:1px;
+padding-right:2px;
+}
+
+/*#riport_tervteny_sel_ho1_contdiv,#riport_tervteny_sel_ho1_contdiv .multi-select-button{
+w1idth:120px;
+}*/
+
+.div_elozo_kov_submit{
+margin-top:5px;display:inline-block;
+}
+
+
+.admin_modkapcsossze_kapcs1_img_add,.admin_modkapcsossze_kapcs2_img_add{
+cursor:pointer;
+margin-left:5px;
+}
+
+/* Kikapcsoltam 2025.11.06. admin mávelet select3 tiltottam és minek sárga ez?
+.select2-container--default.select2-container--disabled .select2-selection--single{
+background: #FFEFD8;
+}
+*/
+
+.select2-container--default.select2-container--disabled .select2-selection__rendered{
+/*color: #A4957D;*/
+color: #000;
+}
+
+
+.table_emre_bejovo.masol{
+/*border-radius: 10px;*/
+box-shadow: 1px 1px 5px #000;
+}
+
+.del_img{
+width:16px;
+height:16px;
+cursor:pointer;
+vertical-align:top;
+}
+
+#admin_szolgkapadat_reszlet_kirajzol.table_emre_kek tbody th {
+text-align:left;
+padding: 2px 4px;
+}
+
+#admin_szolgkapadat_reszlet_kirajzol.table_emre_kek tbody td:nth-child(odd) {
+    color: #000;
+	font-weight:bold;
+}
+
+label{
+cursor:pointer;
+/*display: block;*/
+}
+
+
+
+.ui-dialog-titlebar {
+    border: 1px solid #aaa;
+    /*background: #D4E5F4;*/
+    background: #83c5ff;
+    /*color: #222;*/
+    /*color: #000;*/
+    font-weight: bold;
+
+	background:linear-gradient(to bottom, #B8DEFF 5%, #0061a7 100%);
+	/*background-color:#B8DEFF;*/
+	
+	color:#fff;
+	/*t1ext-decoration:none;
+	t1ext-shadow:0px 1px 1px #154682;*/
+
+}
+
+table.table_emre_kek {
+  /*font-family:Helvetica,Arial,sans-serif;*//*"Times New Roman", Times, serif*/
+  font-family: "Times New Roman", Times, serif;
+  /*font-size:14px;*/
+  /*font-size:15px;*/
+  font-size:14px;
+  /*background-color: #EEE0CD;*//*2020_09_04 kivettem*/
+  /*width: 100%;*/
+  /*height: 200px;*/
+  /*w1hite-space: nowrap;*/
+
+/*új és akkor igy nem nyúlik tovább 2020_09_04*/
+
+/*display:block;white-space:nowrap;*/
+
+/*overflow-x:auto;*/ /*Multiselect miatt!!!*/
+
+/*table-layout:fixed;width:100%;*/
+white-space:nowrap;
+overflow-x:auto;
+
+table-layout:fixed;
+
+border-spacing: 2px 2px;
+/*w1idth: 200%;*/
+/*margin:0px;*/
+margin:1px 0px 1px;
+/*-webkit-box-shadow:0 0 5px #000;*/
+/*-moz-box-shadow:0 0 5px #000;*/
+box-shadow:1px 1px 5px #000;
+
+}
+table.table_emre_kek td, table.table_emre_kek th {
+  border: 0px solid #AAAAAA;/*1px volt*/
+  padding: 2px 4px;
+  /*padding: 1px 2px;*/
+  overflow: hidden; /*Multiselect miatt!!!*/
+  text-overflow: ellipsis;
+}
+table.table_emre_kek thead {
+  /*background: #EDBE74;*/
+  /*background: #eeb151;*/
+  
+  /*
+  background: -moz-linear-gradient(top, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  background: -webkit-linear-gradient(top, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  background: linear-gradient(to bottom, #f1ce97 0%, #eec482 66%, #EDBE74 100%);
+  */
+  
+  /*background: -moz-linear-gradient(top, #f1ce97 0%, #eec482 66%, #eeb151 100%);
+  background: -webkit-linear-gradient(top, #f1ce97 0%, #eec482 66%, #eeb151 100%);*/
+  background: linear-gradient(to bottom, #f1ce97 0%, #eec482 66%, #eeb151 100%);
+  border-bottom: 2px solid #444444;
+}
+table.table_emre_kek thead th,table.table_emre_kek tfoot th{
+  /*font-size: 15px;*/
+  font-size: 14px;
+  font-weight: bold;
+  /*color: #C22A10;background: #EDBE74;
+  color: #C22A10;background: #eeb151;
+  color: #000000;background: #4ea1f3;
+  color: #000000;background: #89c4fe;*/
+  color: #000000;background: #8fbbff;/*eredeti kék fejléc: #b6d0f9/*/
+  /*border-left: 0px solid #D0E4F5;*/
+ padding: 2px 2px;
+  /*p1adding: 2px 4px;*/
+}
+/*table.table_emre_kek thead th:first-child {
+  /border-left: none;
+}*/
+
+table.table_emre_kek tbody th{
+text-align:left;
+font-weight: bold;
+}
+
+table.table_emre_kek tbody tr{
+color: #000;
+/*background: #FFCA7C;*//*E5CFAE*/
+/*background: #87c1fb;*//*E5CFAE*/
+background: #ecf5ff;/*E5CFAE*/
+
+/*font-size: 15px;*/
+font-size: 14px;
+
+}
+
+.table_emre_kek tr:hover
+{
+	color:#000;
+    background-color:#90EE90;
+	/*text-decoration: underline;*/
+}
+
+.table_emre_kek tr.kijelolve{
+color: #000;
+background: #FFF843;
+}
+
+.div_kereshez{
+overflow-x:auto;
+/*margin:10px 0px;*/
+margin:5px 0px 0px;/*fent baljobb lent*/
+/*margin:0px 0px 0px;*//*fent baljobb lent*/
+padding:5px;
+}
+
+.img_resz{
+width:18px;
+height:16px;
+vertical-align:top;
+}
+
+.div_szerz_fel_megj{
+width:350px;
+white-space:normal;
+/*w1ord-wrap: break-word;
+ov1erflow-wrap: break-word;*/
+}
+
+.ui-draggable, .ui-slider-handle {
+touch-action: none;
+}
+
+.talszam_sel3{
+width:130px;margin:-5px;
+}

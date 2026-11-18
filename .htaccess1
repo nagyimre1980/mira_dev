@@ -1,0 +1,23 @@
+
+php_value zlib.output_compression on
+#php_value zlib.output_compression_level 1
+
+#php_value session.gc_maxlifetime 14400
+php_value max_input_vars 3000
+
+Header always unset Cache-Control "expr=%{CONTENT_TYPE} == 'application/pdf'"
+
+#Header set Content-Security-Policy "default-src 'self'; script-src 'self';"
+Header set Content-Security-Policy "connect-src 'self'; img-src 'self';form-action 'self'; object-src 'none'; base-uri 'none';"
+#Header always unset Content-Security-Policy
+
+# 480 weeks cache
+#<FilesMatch "\.(ico|jpg|jpeg|png|gif|js|css)$">
+#Header set Cache-Control "max-age=290304000, public"
+#Header always unset Cache-Control
+#Header set Cache-Control "max-age=63072000, immutable"
+#</FilesMatch>
+
+php_value post_max_size 50M
+php_value upload_max_filesize 50M
+

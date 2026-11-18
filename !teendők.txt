@@ -1,0 +1,2282 @@
+
+
+- Admin jogosultság user keresésnél sessionba tárolom az értékeket! Miért?
+
+- Vizsgált meg: Ha először használod a rendszert, akkor a jóváhagyás 2022-01?
+	Legyen inkább az aktuális hónap? Csak ha üres?
+
+TESZTELD LE: Rögzítés vége dátu megadás, de ez után volt már rögztés.
+	Akkor be lehet állítani?
+	Törlés müködik?
+
+- Szervezet-tevékenység hozzárendelésnél az összeshozzárendelése gomb szűrés esetén az egészet hozzárendelni.
+
+V1.101
+
++ Jquery 4.1.0 update
+
++ Ténybetöltő TIG excel import
+
+V1.100
+
++ 7: Új admin művelet: Ténybetöltő – MIRA-n kívüli adatok TIG táblához 
+- A generálásnál az AH oszlopban MIRA óra szerepel akkor ne jelenjen meg ha nem MIRA óra szerepel akkor pedig jelenjen meg. 
+- A dátum az exportnál és a betöltésnél is két külön oszlopban legyen az év és a hónap.
+
++ Új admin művelet: Nem szerződés alapján TIG-elendő tételek  Ok, de a Cégnév/ kód alapján tudná hozni a Partner kódot és a vevő azonosítót a TIG tábla excelbe, de nem hozza. 
++     CO objektum mező nem enged betűt beírni, de kell hogy engedjen (ne csak számot)
+-             Havi összeg forintban mezőhöz kerüljön oda zárójelben hogy nettó
+-             1., 2. módosításnál kerüljön oda, hogy nettó
+
+
++ 4: Tény 3.3 új riport  3.2 -est engedi legenerálni, de a 3.3-ast nem tudjuk lekérni (nem aktív a gomb)
+
++ Ténybetöltő generálásnál nem a FIX havidíjjasokat kell kiszűrni, hanem a nautrális típu alapján a 6 ID mira órásokat.
+
++ TIG tábla javítások Nem szerz. esetén is kell Vevő azonosító és Partner kód
+
+V1.099
+
++ TCPDF, phpmailer update
+
+Admin művelet:
+	+ HUF
+	+ Vevő azonosító
+	+ Árfolyam
+	+ Nem szerződés alapján TIG-elendő tételek
+	Tervezléshez új
+	+ Ténybetöltő - MIRA-n kívüli adatok TIG táblához (Egyéb nautrália  N oszlop)
+	
+
+- Vevő azonosító
+	Admin művelet ATMX majd a kód
+
+- Nem szerződés alapján TIG-elendő tételek
+
+-  TIG tábla új riport
+
+
+- Új Admin művelet
+ - Ténybetöltő - MIRA-n kívüli adatok TIG táblához
+	- Tábla létrehozások
+		+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_tenypotlastig_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_tenypotlas_mod`;
+		+ ALTER TABLE `mira_user_ker_jog_admin` ADD `admin_tenypotlastiglist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_tenypotlaslist_keres_order_mod`, ADD `admin_tenypotlastiglist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_tenybe_egyebnat.tenybe_egyebnat_evho' AFTER `admin_tenypotlastiglist_keres_talszam`, ADD `admin_tenypotlastiglist_keres_order_mod` ENUM('desc', 'asc') NOT NULL DEFAULT 'desc' AFTER `admin_tenypotlastiglist_keres_order`;
+		
+		
+		ALTER TABLE `mira_user_ker_jog_admin`
+
+  MODIFY `user_admin_muvelet` VARCHAR(30) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
+  MODIFY `user_userlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_user.user_nev',
+  MODIFY `szerv_szervlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_szerv.szerv_nev',
+  MODIFY `projekt_projektlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'projekt.projekt_nev',
+  MODIFY `admin_arazasreflist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'projekt.projekt_nev',
+  MODIFY `admin_tagvkodlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_tagv_kod.tagv_kod',
+  MODIFY `admin_szolgkodlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_szolg_kod.szolg_kod',
+  MODIFY `admin_csopnevlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_szerv_csoport.mira_szerv_csoport_nev',
+  MODIFY `admin_katnevlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'projekt_kat.projekt_kat_nev',
+  MODIFY `admin_kapcstulajlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'kapcs_tulaj.kapcs_tulaj_kod',
+  MODIFY `admin_kapcstorzslist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'kapcs_torzs.kapcs_torzs_nev',
+  MODIFY `admin_kapcsosszelist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'kapcs_ossze.tagv_kod',
+  MODIFY `admin_tervezeslist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'backup_terv_tipus.backup_terv_tipus_id',
+  MODIFY `admin_tenypotlaslist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'backup_tenypotlas.backup_tenypotlas_tagv',
+  MODIFY `admin_szerztipuslist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz_tipus.szerz_tipus_id',
+  MODIFY `admin_szerzalapadatlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz.szerz_id',
+  MODIFY `admin_szerzfeltoltlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz.tagv_kod',
+  MODIFY `admin_tarskatlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_tagv_kod.tagv_kod',
+  MODIFY `admin_szolgcsoplist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz_csop.szerz_csop_id',
+  MODIFY `admin_elsztipuslist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz_elsz_tipus.szerz_elsz_tipus_id',
+  MODIFY `admin_nattipuslist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz_naturalia.szerz_naturalia_id',
+  MODIFY `admin_szerzusergazdalist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz_usergazda.szerz_usergazda_nev',
+  MODIFY `admin_szolgkapadatlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz.tagv_kod',
+  MODIFY `admin_szolgmodadatlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz.tagv_kod',
+  MODIFY `admin_tigadatsapszamlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz.szerz_id',
+  MODIFY `admin_tigadatcolist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz.tagv_kod',
+  MODIFY `admin_tigadatvevoazonlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_tagv_kod.tagv_kod',
+  MODIFY `admin_tigadatnemszerzlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz_tig_nemszerz.szerz_tig_nemszerz_evho',
+  MODIFY `admin_integadatlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz_tetel_integ.szerz_tetel_id',
+  MODIFY `admin_szolgcsophozszolgkodlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_szolg_kod.szolg_kod_nev',
+  MODIFY `admin_kpiszolgkodlist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'kpi_szolg_kod',
+  MODIFY `admin_kpitipuslist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'kpi_tipus.kpi_tipus_kpi',
+  MODIFY `admin_kpiosszekaplist_keres_order` VARCHAR(50) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'szerz.tagv_kod',
+  MODIFY `admin_loglist_keres_order` VARCHAR(20) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'mira_log.log_id',
+  MODIFY `admin_ujszolgkapadatprojektlist_keres_order` VARCHAR(20) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'projekt.projekt_nev';
+  
+szerz_tenybe_egyebnat.tenybe_egyebnat_evho
+ - Nem szerződés alapján TIG-elendő tételek
+	- Tábla létrehozások
+		+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_tigadat_nemszerz` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_tigadat_vevoazon`;
+		+ ALTER TABLE `mira_user_ker_jog_admin` ADD `admin_tigadatnemszerzlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_tigadatvevoazonlist_keres_order_mod`, ADD `admin_tigadatnemszerzlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_tig_nemszerz.szerz_tig_nemszerz_evho' AFTER `admin_tigadatnemszerzlist_keres_talszam`, ADD `admin_tigadatnemszerzlist_keres_order_mod` ENUM('desc', 'asc') NOT NULL DEFAULT 'asc' AFTER `admin_tigadatnemszerzlist_keres_order`;
+		
++ Vevő azonosító új admin művelet
+	+ Tábla létrehozások
+		+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_tigadat_vevoazon` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_tigadat_sapszam`;
+		+ ALTER TABLE `mira_tagv_kod` ADD `tagv_kod_vevoazon` VARCHAR(6) NULL DEFAULT NULL AFTER `tagv_kod_cim`;
+		+ ALTER TABLE `mira_user_ker_jog_admin` ADD `admin_tigadatvevoazonlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_tigadatcolist_keres_order_mod`, ADD `admin_tigadatvevoazonlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'mira_tagv_kod.tagv_kod' AFTER `admin_tigadatvevoazonlist_keres_talszam`, ADD `admin_tigadatvevoazonlist_keres_order_mod` ENUM('desc', 'asc') NOT NULL DEFAULT 'asc' AFTER `admin_tigadatvevoazonlist_keres_order`;
+		
+
++ Új riport: Tevékenység összesítés 3.3
+
++ 3.3 havi zárásos DB csak tevékenység összesítés
+	- SQL létrehozandó
+		+ ALTER TABLE `backup_ver` ADD `backup_ver_teny3_3` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `backup_ver_teny3_2_update_time`, ADD `backup_ver_teny3_3_keszito_ad` VARCHAR(17) NULL DEFAULT NULL AFTER `backup_ver_teny3_3`, ADD `backup_ver_teny3_3ysap_update_time` DATETIME NULL DEFAULT NULL AFTER `backup_ver_teny3_3_keszito_ad`;
+		+ ALTER TABLE `backup_ver` CHANGE `backup_ver_teny3_3ysap_update_time` `backup_ver_teny3_3_update_time` DATETIME NULL DEFAULT NULL;
+
++ Riport 3.1.1 Szervezeti csoportosítási név alapján
+	+ mira_user_riport riport tábla bővítése teny3_1_1_szervcsop
+	+ Tábla létrehozása
+
++ ID átnevezése Szolgáltatás ID -ra
+
++ Szerződéskatalógus – kiegészítő átnevezés : Tigeléshez kapcsolódó adatok
+			CO 
+			sap szerzpődés 
+
++ Admin Művelet: Devizanem és árfolyam
+			Devizanem és árfolyam.
+			+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_tigadat_penznem` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szolgmodadat`;
+			+ ALTER TABLE `mira_user_ker_jog_admin` ADD `admin_tigadatpenznemlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szolgmodadatlist_keres_order_mod`, ADD `admin_tigadatpenznemlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_penznem.penznem' AFTER `admin_tigadatpenznemlist_keres_talszam`, ADD `admin_tigadatpenznemlist_keres_order_mod` ENUM('desc', 'asc') NOT NULL DEFAULT 'desc' AFTER `admin_tigadatpenznemlist_keres_order`;
+			+ ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_netto_havidij_penznem` VARCHAR(3) NOT NULL DEFAULT 'HUF' AFTER `szerz_tetel_netto_havidij`;
+			
+			
++ Pénznem 2 mezőhöz
+	szerz_tetel_netto_havidij
+	Elég a kód
+	2 tizedes.
+
++ Társaság típusnál nem cska azt AKT rekordot módosította visszamenőlegesen
+ Visszaportolva 1.97 verzióba
+
+
++ Nincs KPI nem az aktuális legyen
+AA oszlop óres, U oszlop alapján.
+	Ez a dátum melyik részébe esik bele a Társaság kategóriánál.
+
+ AA - szerz_tetel_adat.szerz_tetel_szolg_mod_date
+ U - szerz_tetel.szerz_tetel_szolg_kezd_date
+ Visszaportolva 1.97 verzióba
+
+V1.098
+
++ Találati lista select már select3-as
+
++ dialog ablak esetén nem nyúlik túl, ha a találai számot megnövelem
+
++ pdf28_3
+
++ Következő gombon felesleges disable.
++ Találati szám megnyomásakor a disable prop áthelyezése JS-be
+
++ dialog ablak méretezése
+ Visszaportolva 1.97 verzióba
+
++ tcdfp 7.x (pdf28)
+ Visszaportolva 1.97 verzióba
+
++ select listák delete kiegészítése
+ Visszaportolva 1.97 verzióba
+
+V1.097
+
++ fojs_select optimalizálások
+
++ Admin hibajavítás fülön csak akkor lesz select2 kereshető lista, ha 1 adott napot választottak ki.
+
++ Statisztika fülön ha user-részletes váltás volt, akkora táblázat nem létezik, ottmaradt a felső széles csúszka (undefined)
+
++ type="text/javascript" elhagyása
+
++ rogzit_ment_proc csak napra figyelt és nem nap-projek párosra
+	visszaportolva 96-ra
+
++ rogzit_ment() globálisan kezelte a timeout. Ha 100ms belül 2 sort módosított, akkor első nem mentödött le
+	visszaportolva 96-ra
+	
++ SimpleXLSX read update 1.1.11 - 1.1.17
+
++ 9-10 növelés vagy csökkentés gombbal rossz kijelöltést eredményezett
+	visszaportolva 96-ra
++ jquery.ui.touch-punch.js update
+	visszaportolva 96-ra
+
++ 00:26
+	10 lépésnél 26 jön be
+	visszaportolva 96-ra
+
+V1.096
+
++ napi maximum nem csak óra, hanem perc is lehet
+ALTER TABLE `mira_user_ker_jog` ADD `user_napi_ido_max_perc` TINYINT(1) UNSIGNED NULL DEFAULT '0' AFTER `user_napi_ido_max_ora`;
+
++ select2 update végelgesre + emre
+
+V1.095
+
++ Szolgáltatási csoporthoz nem 1, hanem 2 KPI tartozhat
+	+ ALTER TABLE `szerz_csop` ADD `kpi_szolg_kod_kozszolg` VARCHAR(8) NULL DEFAULT NULL AFTER `kpi_szolg_kod`, ADD INDEX (`kpi_szolg_kod_kozszolg`);
+	+ ALTER TABLE `szerz_csop` ADD FOREIGN KEY (`kpi_szolg_kod_kozszolg`) REFERENCES `kpi_szolg_kod`(`kpi_szolg_kod`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
++ Új index-ek	
+ALTER TABLE `szerz_tagvkat` ADD INDEX `idx_tagvkod_akt` (`tagv_kod`, `szerz_tagvkat_akt`);
+
+V1.094
+
++ KPI módosítások
+	1: Szolgáltatás kód - KPI szolgáltatás megszüntetése
+
+SQL Mező módosítások: 
+0: szerz_kpi tábla létrehozása
+1: szerz_tetel_adat táblából a 3 mező törlése
+	kpi_nemrelevans
+	kpi_osszekapcs_ck
+	kpi_megj
+2: mira_szolg_kod táblából a kpi_szolg_kod törlése
+	Idegen kulcs, törlése, majd a mező törlése
+3: Új mező bevitele:
+	+ ALTER TABLE `szerz_csop` ADD `kpi_szolg_kod` VARCHAR(8) NULL DEFAULT NULL AFTER `szerz_csop_nev`;
+	ALTER TABLE `szerz_csop` ADD FOREIGN KEY (`kpi_szolg_kod`) REFERENCES `kpi_szolg_kod`(`kpi_szolg_kod`) ON DELETE CASCADE ON UPDATE CASCADE;
+
++ Log 3 pwhere paraméter kialakítása
+	- ALTER TABLE `mira_log` ADD `log_hol3` VARCHAR(100) NULL DEFAULT NULL AFTER `log_ertek2`, ADD `log_ertek3` VARCHAR(255) NULL DEFAULT NULL AFTER `log_hol3`;
+	
++ Gyuris javítás: Lezáráskor már a net kapcsolat nélkül kiválasztott tevékenységet is elmenti.
+	V1.092 visszaportolva
+
+admin_szolgkodlist_keres_order ne
+legyen 
+mira_szolg_kod.kpi_szolg_kod
+senkinél se!!!!!!!!!!
+Ha van akkor
+mira_szolg_kod.szolg_kod
+
+V1.093
+
++ Szerződéshez tevékenységek rendelése.
+ - ALTER TABLE `mira_user_ker_jog_admin` ADD `admin_ujszolgkapadatprojektlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_loglist_keres_order_mod`, ADD `admin_ujszolgkapadatprojektlist_keres_order` VARCHAR(20) NOT NULL DEFAULT 'projekt.projekt_nev' AFTER `admin_ujszolgkapadatprojektlist_keres_talszam`, ADD `admin_ujszolgkapadatprojektlist_keres_order_mod` ENUM('desc', 'asc') NOT NULL DEFAULT 'asc' AFTER `admin_ujszolgkapadatprojektlist_keres_order`;
+
++ Hibajavítás háttre kék, hogy a projekt add ablak jobban eltérjen
+
+V1.092
+
+mira_excel JOB szerveren login felmásolni.
+function.php és function_login.php és tesztelni!!!
+
+- mira_user_ker_jog admin-ra szétválasztása
+	0 mindkét táblára az idegen kulcs beállítása
+	1: tábla másolása: mira_user_ker_jog_admin
+	2: mira_user_ker_jog táblából törlés
+
+ALTER TABLE `mira_user_ker_jog`
+  DROP `user_admin_muvelet`,
+  DROP `user_userlist_keres_talszam`,
+  DROP `user_userlist_keres_order`,
+  DROP `user_userlist_keres_order_mod`,
+  DROP `szerv_szervlist_keres_talszam`,
+  DROP `szerv_szervlist_keres_order`,
+  DROP `szerv_szervlist_keres_order_mod`,
+  DROP `projekt_projektlist_keres_talszam`,
+  DROP `projekt_projektlist_keres_order`,
+  DROP `projekt_projektlist_keres_order_mod`,
+  DROP `admin_arazasreflist_keres_talszam`,
+  DROP `admin_arazasreflist_keres_order`,
+  DROP `admin_arazasreflist_keres_order_mod`,
+  DROP `admin_tagvkodlist_keres_talszam`,
+  DROP `admin_tagvkodlist_keres_order`,
+  DROP `admin_tagvkodlist_keres_order_mod`,
+  DROP `admin_szolgkodlist_keres_talszam`,
+  DROP `admin_szolgkodlist_keres_order`,
+  DROP `admin_szolgkodlist_keres_order_mod`,
+  DROP `admin_csopnevlist_keres_talszam`,
+  DROP `admin_csopnevlist_keres_order`,
+  DROP `admin_csopnevlist_keres_order_mod`,
+  DROP `admin_katnevlist_keres_talszam`,
+  DROP `admin_katnevlist_keres_order`,
+  DROP `admin_katnevlist_keres_order_mod`,
+  DROP `admin_kapcstulajlist_keres_talszam`,
+  DROP `admin_kapcstulajlist_keres_order`,
+  DROP `admin_kapcstulajlist_keres_order_mod`,
+  DROP `admin_kapcstorzslist_keres_talszam`,
+  DROP `admin_kapcstorzslist_keres_order`,
+  DROP `admin_kapcstorzslist_keres_order_mod`,
+  DROP `admin_kapcsosszelist_keres_talszam`,
+  DROP `admin_kapcsosszelist_keres_order`,
+  DROP `admin_kapcsosszelist_keres_order_mod`,
+  DROP `admin_tervezeslist_keres_talszam`,
+  DROP `admin_tervezeslist_keres_order`,
+  DROP `admin_tervezeslist_keres_order_mod`,
+  DROP `admin_tenypotlaslist_keres_talszam`,
+  DROP `admin_tenypotlaslist_keres_order`,
+  DROP `admin_tenypotlaslist_keres_order_mod`,
+  DROP `user_szervjovahagyo_keres_talszam`,
+  DROP `user_projuserhozza_keres_talszam`,
+  DROP `user_projekthozza_keres_talszam`,
+  DROP `user_ujtevekuserhozza_keres_talszam`,
+  DROP `user_ujtevekenyseguserhozza_keres_talszam`,
+  DROP `user_felettesjovahagyo_keres_talszam`,
+  DROP `user_stat_projekthozza_keres_talszam`,
+  DROP `user_projuserjovahagyohozza_keres_talszam`,
+  DROP `user_projektjovahagyohozza_keres_talszam`,
+  DROP `admin_szerztipuslist_keres_talszam`,
+  DROP `admin_szerztipuslist_keres_order`,
+  DROP `admin_szerztipuslist_keres_order_mod`,
+  DROP `admin_szerzalapadatlist_keres_talszam`,
+  DROP `admin_szerzalapadatlist_keres_order`,
+  DROP `admin_szerzalapadatlist_keres_order_mod`,
+  DROP `admin_szerzfeltoltlist_keres_talszam`,
+  DROP `admin_szerzfeltoltlist_keres_order`,
+  DROP `admin_szerzfeltoltlist_keres_order_mod`,
+  DROP `admin_tarskatlist_keres_talszam`,
+  DROP `admin_tarskatlist_keres_order`,
+  DROP `admin_tarskatlist_keres_order_mod`,
+  DROP `admin_szolgcsoplist_keres_talszam`,
+  DROP `admin_szolgcsoplist_keres_order`,
+  DROP `admin_szolgcsoplist_keres_order_mod`,
+  DROP `admin_elsztipuslist_keres_talszam`,
+  DROP `admin_elsztipuslist_keres_order`,
+  DROP `admin_elsztipuslist_keres_order_mod`,
+  DROP `admin_nattipuslist_keres_talszam`,
+  DROP `admin_nattipuslist_keres_order`,
+  DROP `admin_nattipuslist_keres_order_mod`,
+  DROP `admin_szerzusergazdalist_keres_talszam`,
+  DROP `admin_szerzusergazdalist_keres_order`,
+  DROP `admin_szerzusergazdalist_keres_order_mod`,
+  DROP `admin_szolgkapadatlist_keres_talszam`,
+  DROP `admin_szolgkapadatlist_keres_order`,
+  DROP `admin_szolgkapadatlist_keres_order_mod`,
+  DROP `admin_szolgkapadatlist_keres_urlaprejt`,
+  DROP `admin_szolgmodadatlist_keres_talszam`,
+  DROP `admin_szolgmodadatlist_keres_order`,
+  DROP `admin_szolgmodadatlist_keres_order_mod`,
+  DROP `admin_tigadatsapszamlist_keres_talszam`,
+  DROP `admin_tigadatsapszamlist_keres_order`,
+  DROP `admin_tigadatsapszamlist_keres_order_mod`,
+  DROP `admin_tigadatcolist_keres_talszam`,
+  DROP `admin_tigadatcolist_keres_order`,
+  DROP `admin_tigadatcolist_keres_order_mod`,
+  DROP `admin_integadatlist_keres_talszam`,
+  DROP `admin_integadatlist_keres_order`,
+  DROP `admin_integadatlist_keres_order_mod`,
+  DROP `admin_szolgcsophozszolgkodlist_keres_talszam`,
+  DROP `admin_szolgcsophozszolgkodlist_keres_order`,
+  DROP `admin_szolgcsophozszolgkodlist_keres_order_mod`,
+  DROP `admin_kpiszolgkodlist_keres_talszam`,
+  DROP `admin_kpiszolgkodlist_keres_order`,
+  DROP `admin_kpiszolgkodlist_keres_order_mod`,
+  DROP `admin_kpitipuslist_keres_talszam`,
+  DROP `admin_kpitipuslist_keres_order`,
+  DROP `admin_kpitipuslist_keres_order_mod`,
+  DROP `admin_kpiosszekaplist_keres_talszam`,
+  DROP `admin_kpiosszekaplist_keres_order`,
+  DROP `admin_kpiosszekaplist_keres_order_mod`,
+  DROP `admin_loglist_keres_talszam`,
+  DROP `admin_loglist_keres_order`,
+  DROP `admin_loglist_keres_order_mod`;
+
+	3: mira_user_ker_jog_admin táblából törlés
+
+ALTER TABLE `mira_user_ker_jog_admin`
+  DROP `ev_ki`,
+  DROP `ho_ki`,
+  DROP `nap_ki`,
+  DROP `user_napi_ido_max_ora`,
+  DROP `stat_stat_leker_talszam`,
+  DROP `jovahagy_szur_szerv_id`,
+  DROP `jovahagy_szur_ev`,
+  DROP `jovahagy_szur_ho`,
+  DROP `jovahagy_szur_user_ad`,
+  DROP `stat_leker_ev`,
+  DROP `stat_leker_ho`,
+  DROP `stat_leker_nap`,
+  DROP `stat_leker_szerv_id`,
+  DROP `stat_leker_projekt_id`,
+  DROP `stat_leker_kiuser`,
+  DROP `stat_leker_user`,
+  DROP `stat_leker_tipus`,
+  DROP `stat_leker_maxuser`,
+  DROP `user_modhelyettes_keres_talszam`,
+  DROP `admin_riportszerznyilvlist_keres_talszam`,
+  DROP `admin_riportszerznyilvlist_keres_order`,
+  DROP `admin_riportszerznyilvlist_keres_order_mod`;
+  
+
+- Admin új művelet: LOG
+ + ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_log` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_kpi_osszekap`;
+ALTER TABLE `mira_user_ker_jog` ADD `admin_loglist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_kpiosszekaplist_keres_order_mod`, ADD `admin_loglist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'mira_log.log_id' AFTER `admin_loglist_keres_talszam`, ADD `admin_loglist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'desc' AFTER `admin_loglist_keres_order`;
+
++ TCPDF update
+
+V1.091
+ 
+ + 3 új riport:
+	admin műveleteknél van a jogosultság, szervezet és a tevékenység fül
+ + Admin tevékenység Excel export: Szervezet (2) és felhasználók (3) fülön legyen ott az önköltség kivétel.
+	felhasználónál meg ha van kivétel a felhasználóhoz, akkor az, ha nincs, akkor nézze meg a szervezeti kivételt és ha van, akkor az, ha ott sincs, akkor ami az első fülön látszik
+ 
+ + KPI összerendelés: megjegyzés
+	+ ALTER TABLE `szerz_tetel_adat` ADD `kpi_megj` TEXT NULL DEFAULT NULL AFTER `kpi_osszekapcs_ck`;
+ 
+ + KPI összerendelés: Szerződés típus alapján való keresésnél üres volt a select2
+
+ + "Szolgáltatás megszünés dátuma" oszlop a AB AD és AC közül a legkisebb.
+	Módosítás száma elé
+
+ + Szolgáltatás megszünés dátuma, 
+	 - Nincs vagy Jövőbeli
+	 - Múltbeli
+ 1: Ha mind a három mező üres, akkor - Nincs-jövőbeli
+ 2: Csak AC van kitöltve - Ha múltbéli akkor Nincs-jövőbeli
+ 3: Ha AB üres AC és AD ki van töltve, akkor csak AD az érdekes!
+	- Ha múltbéli akkor Nincs-jövőbeli
+ 4: Ha mind a három ki van töltve.
+	AB és AD közül az dönti el amelyik kisebb, ami kisebb az alapján jövőbéli vagy múltébli.
+ 5: AB és  AC ki van töltve és AD pedig üres, akkor
+	- kettő közül amelyik kisebb, azt kell figyelni venni.
+ Mezők:
+ AB: szerz_tetel_vege_date
+ AC: szerz_tetel_szolg_origveg_date
+ AD: szerz_tetel_szolg_aktveg_date
+ 
+ 
+V1.090
+
++ Admin felületen a 12 ($GLOBALS['tagv_alap_napi_napi_ido_max_ora']) többet nem enged munkaidőnek beállítani.
+
++ Riportoknál a fájlnévben az év is benne legyen
+	3.1.1 fájlnév:
+	Teny3_1_1_2024_2026_02_10-09_25_25.xlsx
+	 
+	3.2 fájlnév:
+	Teny3_2_2024_2026_02_10-09_25_34.xlsx
+	 
+	Aktuális tevékenység kód - Társaság összesítés 3 fájlnév:
+	Teny3_2024_2026_02_10-09_25_48.xlsx
+	 
+	Tény-terv eltérés fájlnév:
+	Teny3_2024_2026_02_10-09_26_36.xlsx
+ 
+ 
++ Email üdvözlettel és tömeges email vissza-összefoglaló cím kivezetése paraméterbe
++ Hónap lezárás gomb tiltása, hogy ne lehessen többször megnyomni.
++ Jóváhagyó fülön az órára egérrel ráálva, csak 2szer jelenítette meg.
++ Excel exportálás lehetősége jóváhagyó fülön
++ PDF és excel exportálása rögzítő és jóváhagyó fülön jogosultság ellenőrzése
++ Minden jóváhagyásnál jogosultság ellenőrzés, egyenlőre csak a fül ellenőrzése, többi túl bonyolult lenne
++ Scrool optimaliázálás jóváhagyó és statisztika fülnél
++ Jóváhagyó fülön a visszakülve-nél nem volt tooltip, link_fek és link_pir_vas el volt írva
+
+V1.089
+
++ Admin felületen Szervezeteknél rögzítésnél dupla csúszka
++ Admin felületen Tevékenység rögzítésnél dupla csúszka
++ tootlip access javítása
+
+V1.088
+
++ user felületen a csúszka javítása
+
++ Erősné javítás: DUPLA megnyitás javítása
+
+V1.087
+
++ KPI nem releváns pipálás átalakítása 
+	- Összes
+	- KPI releváns
+	- KPI nem releváns
+
++ Hónap lezárásakor legyen elmentva minden látható nap!
+
++ ajax_mail_uj702.php update
+
++ Keretszerződés oszlop törlése KPI összerendelés műveletből.
+
++ KPI riport jog adás nem müködik. 
+
++ KPI szolgáltatás kód a riportba a C oszlopba.
+
++ riport jog javítva ha nincs teljes jogunk
+	1.086 visszaportolva
+
++ TCPDF upgrade pdf25-pdf26
+
++ Admin terv betöltés +1 évre is lehetséges (Előre) Juhász Balázs igénye
+
+V1.086
+
++ Admin jogosultságok műveletnél az Excel exportnál új fülek:
+	- Riport jogosultságok
+	- Statisztika teljes jogok
+	- Statisztika szervezet jogok
+	- Statisztika tevékenység jogok
+
++ Új szerződés felvitelekor nincs szolgáltatáscsoport<->szolgáltatáskód duplikátum ellenőrzés, ha KK99-es szolgáltatás kód van kiválasztva
+	V1.085 vissszaportolva.
+
++ KPI miatti db módosítás
+	+ ALTER TABLE `mira_szolg_kod` ADD `kpi_szolg_kod` VARCHAR(8) NULL DEFAULT NULL AFTER `szolg_kod_nev`, ADD INDEX (`kpi_szolg_kod`);
+	+ ALTER TABLE `mira_szolg_kod` ADD FOREIGN KEY (`kpi_szolg_kod`) REFERENCES `kpi_szolg_kod`(`kpi_szolg_kod`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+	+ ALTER TABLE `mira_user_ker_jog` ADD `admin_kpiszolgkodlist_keres_talszam` SMALLINT(2) NOT NULL DEFAULT '5' AFTER `admin_riportszerznyilvlist_keres_order_mod`, ADD `admin_kpiszolgkodlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'kpi_szolg_kod' AFTER `admin_kpiszolgkodlist_keres_talszam`, ADD `admin_kpiszolgkodlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_kpiszolgkodlist_keres_order`;
+	+ ALTER TABLE `mira_user_ker_jog` ADD `admin_kpitipuslist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_kpiszolgkodlist_keres_order_mod`, ADD `admin_kpitipuslist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'kpi_tipus.kpi_tipus_kpi' AFTER `admin_kpitipuslist_keres_talszam`, ADD `admin_kpitipuslist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_kpitipuslist_keres_order`;
+	+ ALTER TABLE `mira_user_ker_jog` ADD `admin_kpiosszekaplist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_kpitipuslist_keres_order_mod`, ADD `admin_kpiosszekaplist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.tagv_kod' AFTER `admin_kpiosszekaplist_keres_talszam`, ADD `admin_kpiosszekaplist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_kpiosszekaplist_keres_order`;
+	+ ALTER TABLE `szerz_tetel_adat` ADD `kpi_osszekapcs_ck` ENUM('0','1') NULL DEFAULT NULL COMMENT 'Ha ez 1, akkor ellenőrizni kell a KPI-t. Mert szerződés szám módosítás történt' AFTER `szerz_tetel_mod_user_ad`;
+	+ ALTER TABLE `szerz_tetel_adat` ADD `kpi_nemrelevans` ENUM('0','1') NULL DEFAULT NULL AFTER `szerz_tetel_mod_user_ad`;
+
++ Dialog alblakok title fejszövege nem középpen volt, kicsit, lejebb. Kiigazítottam
+
++ ÚJ Riport: beszerzési és közbeszerzési tevékenységek
+
++ ÚJ Riport: KK99 tevékenységek
+
++ Héttérszín különbőzik dev teszt és éles között
+
+V1.085
+
++ KPI fejlesztés
+	+ Új Admin műveletek:
+		-	KPI szolgáltatás kód
+		-	KPI típusok
+		-	KPI típus-szerződés összerendelés
+		+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_kpi_szolgkod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szerzusergazda`, ADD `admin_jog_admin_kpi_tipus` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_kpi_szolgkod`, ADD `admin_jog_admin_kpi_osszekap` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_kpi_tipus`;
++ TIG-hez kapcsolódó 2 admin művelet külön csoportba rendezve
+
++ Szerződés feltöltése: megjegyzés megjelenítése
+
++ Riport jogosultság állításánál 0 legyen az alapértelmezett
+
++ Szerződés: -	Alapadat ID kirakása az első oszlopba. Sima és Módosításnál is
++ Szerződés TIG-nél CO objektum ne látszódjon a megszüntetett.
+
++ Árajánlat aláírás dátuma
+	- szerz_tetel_arajanlat_alair mező törlése!!!!!!!!!!!!!!!!!!!!!!!!
+	+ Új felvitele: szolg_kod után szerz_tetel_arajanlat_alair_date
+		+ ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_arajanlat_alair_date` DATE NULL DEFAULT NULL COMMENT 'Árajánlat aláírása mező (Nem kötelező)' AFTER `szolg_kod`;
+			Szerződés aláírás dátuma
+V1.084
+
+- Új admin művelet: Szerződés feltöltése
+ + ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_szerzfeltolt` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szerzalapadat`;
+ + ALTER TABLE `mira_user_ker_jog` ADD `admin_szerzfeltoltlist_keres_talszam` SMALLINT(2) NOT NULL DEFAULT '5' AFTER `admin_szerzalapadatlist_keres_order_mod`, ADD `admin_szerzfeltoltlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.tagv_kod' AFTER `admin_szerzfeltoltlist_keres_talszam`, ADD `admin_szerzfeltoltlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szerzfeltoltlist_keres_order`;
+ + ALTER TABLE `szerz_tetel_adat` ADD INDEX (`szerz_tetel_modszam_kezi`);
+ + ALTER TABLE `szerz_tetel_adat` ADD INDEX (`szerz_id`, `szerz_tetel_modszam_kezi`);
+ + ALTER TABLE `szerz` ADD INDEX (`tagv_kod`);
+ + ALTER TABLE `szerz_tipus` ADD INDEX (`szerz_tipus_nev`);
+ + szerz_file tábla szerkezetének áttöltése teszt és élesre, ha végleges!
+
++ Szerződés katalógus új mező: árajánlat aláírása 
+	+ ALTER TABLE `szerz_tetel` ADD `szerz_tetel_arajanlat_alair` DATE NULL DEFAULT NULL COMMENT 'a. árajánlat aláírása mező (Nem kötelező)' AFTER `szerz_tetel_vege_mikor`;
+
++ Aláírás dátuma -> Szerződés aláírás dátuma
+
++  Email-ben avisszaküldés ideje már nem év-hó hanem év.hó
+
++ Rögzítő fülön ha a select tevékenység lista nyitva van, és nem kéremv van kiválasztva, akkor a DEL gomb már müködik
+
++ logon() pár sor az admin=1 alá helyezve
+
+V1.083
++ Ad kereső: Letilott AD megjelenítése
+V1.082
+
++ Szerződés időtartam
+aktuális (határozott esetén)
+ + ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_szolg_aktveg_date` DATE NULL DEFAULT NULL COMMENT 'Szerződés időtartam aktuális (határozott esetén)' AFTER `szerz_tetel_alair_date`;
+ 
++ Aláírás dátuma Kell új helyen és módosításkor is, külön mező.
+ + ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_alair_date` DATE NULL DEFAULT NULL AFTER `szolg_kod`;
+
++ Ad költséghely + oszlop: Tevékenység Felhasználók éás szervezetnél
+
+V1.081
+
++ riport sumbit tiltás optimalizálás itt is
+
+V1.080
+
++ Statisztika letöltés gomb nem fix tiltásos, hanem ajax alapú és csak addig van tiltva, amíg a fájl letöltés alatt áll
++ simplexls tömörítés kisebb
+
+V1.079
+
+- Új admin művelet: Árazási relevancia mező
+ + ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_arazasref_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_proj_mod`;
+ + ALTER TABLE `mira_user_ker_jog` ADD `projekt_arazasreflist_keres_talszam` MEDIUMINT(3) UNSIGNED NOT NULL DEFAULT '5' AFTER `projekt_projektlist_keres_order_mod`, ADD `projekt_arazasreflist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'projekt.projekt_nev' AFTER `projekt_arazasreflist_keres_talszam`, ADD `projekt_arazasreflist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `projekt_arazasreflist_keres_order`;
+ + ALTER TABLE `mira_user_ker_jog` CHANGE `projekt_arazasreflist_keres_talszam` `admin_arazasreflist_keres_talszam` MEDIUMINT(3) UNSIGNED NOT NULL DEFAULT '5', CHANGE `projekt_arazasreflist_keres_order` `admin_arazasreflist_keres_order` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL DEFAULT 'projekt.projekt_nev', CHANGE `projekt_arazasreflist_keres_order_mod` `admin_arazasreflist_keres_order_mod` VARCHAR(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL DEFAULT 'asc';
+ + ALTER TABLE `projekt` ADD `projekt_arazasref` ENUM('0','1') NULL DEFAULT NULL AFTER `projekt_id_max_all_ora`;
+
+V1.078
+
++ 5 év a szerződés nyivlántartónál minden dátum esetén a vége dátum intervalluma
+
++ Riportnál ha megszünt, akkor az aktulális oszlopnál IGEN szerepel.
+
+- Riport html nyilvántartó
+ - ALTER TABLE `mira_user_ker_jog` ADD `admin_riportszerznyilvlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szolgcsophozszolgkodlist_keres_order_mod`, ADD `admin_riportszerznyilvlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_tetel.szerz_tetel_id' AFTER `admin_riportszerznyilvlist_keres_talszam`, ADD `admin_riportszerznyilvlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_riportszerznyilvlist_keres_order`;
+
+V1.077
+
++ Szerződésnyil riport jog kezelés - pénzügy számvitel stb... Szolg csoport
+	+ ALTER TABLE `mira_user` ADD `ful_riport_szerz_csop_all` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `ful_riport_all`;
+
+
++ Szerződésnyilv riport az összegek legyen szám típusuak, ha lehet tagolással vagy anélkül
+
+V1.076
+
+- státusz fejlesztés: 0 (aktuális) - Itt már ne írja ki az aktuálist, ha a szerződés megszüntetésre került.
+
++ Máté hibája:
+ 
+ Amikor rögzítek a szolgáltatáshoz kapcsolódó adatoknál egy új szolgáltatást mondjuk és beírom Szerződés elérése a hálózaton pontba az elérési útját és a mentés után egy sorral feljebb a TT megjegyzések sorban hozza ezt az adatot. Utána ha módosítom és újra átteszem a jó sorba akkor már jól hozza. Ezt is meg tudnád esetleg nézni?
+
+V1.075
+
++ Folyamatban -1 nincs kipipálási lehetőség.
+
+V1.074
+
+ + Admin tevékenység szervezetek Önköltség kategória és user kivételeknél is
+	- Kipipáláskor ne törlődjön, hanem maradjon meg a háttérben az érték - Plusz mező
+	- Pirtonál átírni, hogy ezt a plusz mezőt figyelj.,
+
+1: tábla másolása
+	projekt_szerv_katkivetel
+	projekt_user_katkivetel
+		_torold_ki
+2: idegen kulcs beállítása
+3: Törlés a nem null értékek
+	delete FROM `projekt_user_katkivetel` WHERE `projekt_user_kat_id_kivetel` IS NULL
+	delete FROM `projekt_szerv_katkivetel` WHERE `projekt_kat_id_kivetel` IS NULL
+4: ID törlése
+5: Elsődleges kulcs átállítása
+
+ + Hibajavításnál a hónap kiválasztásakor a nap értékénél eltünik az összes
+	- élebe visszaportolva
+	
+ + Admin user jog: statisztika  jognál Szerver résznél keresési lehetőség
+V1.073
+
+- Teljes
+- Élő szerződések
+	amikor futtatod akkor a korábbi ne legyen benne.
+	V oszlop szerint
+
+	- ALTER TABLE `mira_user_riport` CHANGE `riport_tipus` `riport_tipus` ENUM('nonp','tervteny','teny3_1_1','teny3_2','teny3','kapcs_ossze','teny3_elteres','szerznyilv','szerznyilv_elo') CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL;
+
++ Megszüntéskor X helyett legyen ott a dátum amikor megszüntettem.
+
+V1.072
+
++ Szerződés módosítás száma mező (1-20 között select, excel export-ba is kell)
+	- ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_modszam_kezi` TINYINT(1) UNSIGNED NULL DEFAULT '0' AFTER `szerz_tetel_modszam`;
+
++ Módosítás ID: legyen az aotomata mez érték (Szolgáltatás módosítás száma)
++ Listában Szerződés hatályba lépésének időpontja
+	Módosításnál a módosítás dátuma
+	
+	Szerződés módosítás száma: - Dátum - Módosítás ID:
+	Szerz. mód. száma: 0 - dátum - Módosítás ID:
+
++ Excel riport: J oszlopba az új érték.
+Régi meg a végére.
+
++ Önköltség kategóriá kivételek a user-hez rendelt tevékenységek esetén is.
+	- Tevékenység admin résznél
+	- User jogosultság résznél is
+	+ SQL: ALTER TABLE `projekt_user` ADD `projekt_user_kat_id_kivetel` SMALLINT(2) UNSIGNED NULL DEFAULT NULL AFTER `user_ad`, ADD INDEX (`projekt_user_kat_id_kivetel`);
+		Idegen kulcs is!!
+	
+- Tevékenység admin fülön a user-hez rendelt tevékenységeknél a user neve mellett az aktuális szervezetneve is legyen kiírva.
+
+- 3.2 és 3.1 riport hozzáigazítása az új user-es kategóriához.
+
+V1.071
+
+- Admin Tevékenyésg kategória név átnevezése kód-re, és külön név mező beállítása
+	- ALTER TABLE `projekt_kat` ADD `projekt_kat_nev_h` VARCHAR(255) NOT NULL DEFAULT '' AFTER `projekt_kat_nev`;
+
++ Tevékenyésg kategória (Önköltség néven) riport 3.1.1 és 3.2 felvitele.
+	Élesre külön felrakva.
+
+V1.070
+
+- Módosításkor is lehet folyamatban
+	Új mezők:
+		+ ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_akt_folyamatban` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `szerz_tetel_akt`, ADD INDEX (`szerz_tetel_akt_folyamatban`);
+		+ ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_akt_folyamatban_vanmasik` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `szerz_tetel_akt_folyamatban`;
+	
++ szerződésgazdát lehet inaktiválni
+  ALTER TABLE `szerz_usergazda` ADD `szerz_usergazda_inaktiv` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `szerz_usergazda_tsz`, ADD INDEX (`szerz_usergazda_inaktiv`);
+
++ Szerződés alapadatok duplikáció hibás: Egyeid index-t kellett törölni
++ Ezres tagolás bevezetése + mezőkre mindenhol
++ Szerződésmódosításnál a módosítás dátumának kitöltése már kötelező!
++ Hibajavítás esetén már ottvan a módosítás dátuma
+
+
+
+V1.069
+
++ riport fejlesztés
+	+ jogosultság adás
+	+ Excel fejlesztés elkészült
+
++ Társaság átallakítás
+	+ Művelet sorrend csere
+	+ Átalakítás társasághoz kötődik
+
+ + Folyamatban levő pipa szolgáltatáshoz kapcsoló adatoknál.
+	+ Ha ez be van pipálva, akkor 0. helyett -1 - folyamatban megjelenítése a listában	
+	+ És erre nem lehet szerződést módosítani, sőt a módosításkor a listában meg se jelenik!
+	+ És integrációnál se jelenik meg!
+	+ És CO se jelenik meg!
+	+ Excel exportnál külön oszlop legyen erre.
+	- ALTER TABLE `szerz_tetel` ADD `szerz_tetel_szolg_kezd_date_folyamatban` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `szerz_tetel_szolg_kezd_date`, ADD INDEX (`szerz_tetel_szolg_kezd_date_folyamatban`);
+	
+ + Megszüntetéskor a vége dátum nem lehet korábbi mint az utolsó módosítás dátuma
+	Meg persze az eredeti eleje vége
+
++ Szolgáltatás-knála keresésnél új keresési opció: Integárációban érintett: Igen-nem
+	Integrációs fülnél nem! Ott csak az Igen legyen mint a opció :)
+
+- Integrációban érintett mező
+ + Nem dátum típus, hanem igen-nem
+ + Ha ez igen, csak akkor legyen látható az integrációban érintett fülön.
+ + Integrációban érintett fülön, a többletnél minden sorhoz dátum megadása.
+		új mező: szerz_tetel_integ_erintett
+		- ALTER TABLE `szerz_tetel_adat` ADD `szerz_tetel_integ_erintett` ENUM('0','1') NULL DEFAULT NULL AFTER `szerz_tetel_integ_erint_date`;
+		régi mező törlése: szerz_tetel_integ_erint_date
+		- ALTER TABLE `szerz_tetel_adat` DROP `szerz_tetel_integ_erint_date`;
+		Új dátum mező:
+		ALTER TABLE `szerz_tetel_integ` ADD `szerz_tetel_integ_tobblet_date` DATE NULL DEFAULT NULL AFTER `szerz_tetel_integ_tobblet_ho`;
+		
++ Szerződéses alapadatokhoz új mező: Megjegyzés
+	- Majd a listákban title-ben ennek megjelenítése
+	- Találati listákban a társaságra állva mutatja meg
+
++ Szerződéses alapadatnál megjegyzés
+	ALTER TABLE `szerz` ADD `szerz_megj` TEXT NULL DEFAULT NULL AFTER `szerz_date_hatalybelep`;
+
++ Szerződés típusnál 2 új mező, ez alapján
+	- Ha nem duplikálható, akkor a szerződéses alapadatoknál az első 3 mezőt kell figyelni felvitelkor, különben lehet dupla (Dátum szerint is)
+	- keretszerződés igen/nem, és ez alapján hozná fel az adott szerződéstípust a szerződéses alapadatok műveletnél
+	
++ szerződéstípus művelet
+	Új mezők: szerz_tipus_szerz_keret és szerz_tipus_dupla
+	- ALTER TABLE `szerz_tipus` ADD `szerz_tipus_szerz_keret` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `szerz_tipus_nev`, ADD `szerz_tipus_dupla` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `szerz_tipus_szerz_keret`;
+
+Kérdéseim:
+1: Alábbi dátum most minden módosítás verziónál látszik, lehet, hogy csak az autolsó verziónál kellene.
+Szolgáltatás megszünése - vége dátum
+2: Szolgáltatás megszünt: Ez látni kellene a találati listában valahol?
+
+3: Új rekord bevitelekor mit kell figyelni, hogy ne legyen dupla?
+	- Szerződéses alapadat: Mind a 4 mezőt figyelem jelenleg!
+	- Új szolgáltatáshoz kapcsolódó adatok: esetében alapID szolgáltatás csoport, szolgáltatás kód
+
+4: Új rekord bevitelekor melyik mezők legyenek kötelezőek?
+	- Hibajavítás és módosításkor?
+
+5: Új szoglálgáltatás bevitelekor az alapID-nál lévő dátumhoz kellene kötni az ott megaddott 3 dátumot?
+	- AlapID dátumnál nem lehet korábbi?
+	- Ugyan ez módosításkor? Ott több dátum is van..
+
+V1.068
+
+- Adatok másolása kilépési dátumra nem figyelt
+
++ Kezdő hónap 2024 július.
+Átrakod kézzel 2025-re és 2025 júliusráa ugrik grafikusan
+
++ Szerződés nyilvántartó user jogok
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szerztipuslist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `user_projektjovahagyohozza_keres_talszam`, ADD `admin_szerztipuslist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_tipus.szerz_tipus_id' AFTER `admin_szerztipuslist_keres_talszam`, ADD `admin_szerztipuslist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szerztipuslist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szerzalapadatlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szerztipuslist_keres_order_mod`, ADD `admin_szerzalapadatlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.szerz_id' AFTER `admin_szerzalapadatlist_keres_talszam`, ADD `admin_szerzalapadatlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szerzalapadatlist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_tarskatlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szerzalapadatlist_keres_order_mod`, ADD `admin_tarskatlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.szerz_id' AFTER `admin_tarskatlist_keres_talszam`, ADD `admin_tarskatlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_tarskatlist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szolgcsoplist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_tarskatlist_keres_order_mod`, ADD `admin_szolgcsoplist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_csop.szerz_csop_id' AFTER `admin_szolgcsoplist_keres_talszam`, ADD `admin_szolgcsoplist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szolgcsoplist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_elsztipuslist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szolgcsoplist_keres_order_mod`, ADD `admin_elsztipuslist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_elsz_tipus.szerz_elsz_tipus_id' AFTER `admin_elsztipuslist_keres_talszam`, ADD `admin_elsztipuslist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_elsztipuslist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_nattipuslist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_elsztipuslist_keres_order_mod`, ADD `admin_nattipuslist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_naturalia.szerz_naturalia_id' AFTER `admin_nattipuslist_keres_talszam`, ADD `admin_nattipuslist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_nattipuslist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szerzusergazdalist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_nattipuslist_keres_order_mod`, ADD `admin_szerzusergazdalist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz_usergazda.szerz_usergazda_nev' AFTER `admin_szerzusergazdalist_keres_talszam`, ADD `admin_szerzusergazdalist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szerzusergazdalist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szolgkapadatlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szerzusergazdalist_keres_order_mod`, ADD `admin_szolgkapadatlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.tagv_kod' AFTER `admin_szolgkapadatlist_keres_talszam`, ADD `admin_szolgkapadatlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szolgkapadatlist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szolgkapadatlist_keres_urlaprejt` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_szolgkapadatlist_keres_order_mod`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szolgmodadatlist_keres_talszam` SMALLINT(2) NOT NULL DEFAULT '5' AFTER `admin_szolgkapadatlist_keres_urlaprejt`, ADD `admin_szolgmodadatlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.tagv_kod' AFTER `admin_szolgmodadatlist_keres_talszam`, ADD `admin_szolgmodadatlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szolgmodadatlist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_tigadatsapszamlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szolgmodadatlist_keres_order_mod`, ADD `admin_tigadatsapszamlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.szerz_id' AFTER `admin_tigadatsapszamlist_keres_talszam`, ADD `admin_tigadatsapszamlist_keres_order_mod` VARCHAR(50) NOT NULL DEFAULT 'asc' AFTER `admin_tigadatsapszamlist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_tigadatcolist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_tigadatsapszamlist_keres_order_mod`, ADD `admin_tigadatcolist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.tagv_kod' AFTER `admin_tigadatcolist_keres_talszam`, ADD `admin_tigadatcolist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_tigadatcolist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_integadatlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_tigadatcolist_keres_order_mod`, ADD `admin_integadatlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'szerz.tagv_kod' AFTER `admin_integadatlist_keres_talszam`, ADD `admin_integadatlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_integadatlist_keres_order`;
+ ALTER TABLE `mira_user_ker_jog` ADD `admin_szolgcsophozszolgkodlist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_integadatlist_keres_order_mod`, ADD `admin_szolgcsophozszolgkodlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'mira_szolg_kod.szolg_kod_nev' AFTER `admin_szolgcsophozszolgkodlist_keres_talszam`, ADD `admin_szolgcsophozszolgkodlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_szolgcsophozszolgkodlist_keres_order`;
+ 
++ Szerződés nyilvántartó új admin műveletek
+ //- ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_szerzalapadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_tenypotlas_mod`, ADD `admin_jog_admin_szerz_tarskat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szerzalapadat`, ADD `admin_jog_admin_szerz_szolgkapadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_tarskat`, ADD `admin_jog_admin_szerz_szolgmodadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szolgkapadat`, ADD `admin_jog_admin_szerz_tigadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szolgmodadat`, ADD `admin_jog_admin_szerz_szolgmegszun` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_tigadat`, ADD `admin_jog_admin_szerz_integadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szolgmegszun`;
+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_szerzalapadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_tenypotlas_mod`, ADD `admin_jog_admin_szerz_tarskat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szerzalapadat`, ADD `admin_jog_admin_szerz_szolgkapadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_tarskat`, ADD `admin_jog_admin_szerz_szolgmodadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szolgkapadat`, ADD `admin_jog_admin_szerz_tigadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szolgmodadat`, ADD `admin_jog_admin_szerz_integadat` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_tigadat`;
+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_szerztipus` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_tenypotlas_mod`, ADD `admin_jog_admin_szerz_szolgcsop` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szerztipus`, ADD `admin_jog_admin_szerz_elsztipus` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_szolgcsop`, ADD `admin_jog_admin_szerz_nattipus` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_elsztipus`;
+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_szerzusergazda` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_integadat`;
+ ALTER TABLE `mira_user_admin_jog` CHANGE `admin_jog_admin_szerz_tigadat` `admin_jog_admin_szerz_tigadat_co` ENUM('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL DEFAULT '0';
+ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_szerz_tigadat_sapszam` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_szerz_tigadat_co`;
+  
+Szerződés típus
+Szolgáltatás csoport
+Elszámolás típusa
+Naturália típus
+
+Szerződés alapadatok
+Társaság kategória
+Szolgáltatáshoz kapcsolódó adatok
+Szolgáltatás módosításhoz kapcsolódó adatok
+TIGeléshez kapcsoló adatok
+Szolgáltatás megszüntetése
+Integrációs adatok
+
+Szerződésgazda
+
++ TCPDF update 23-24
+
++ Szervezet jóváhagyi lezárás megszüntetése
+	rogzit_jovahagy.php fűjl (jovahagy_kezi_lezaras js funkció marad)
+	Élesre V1.067 visszaportolva.
++ jqueryui 1.14.1 update
+
+V1.067
+
++ Kapcsolattartó riport javítás
+
++ Tevékenység détum kezeléshez +5 év
+
+V1.066
+
+- Riport HTML
+////Nem kell!!
+////ALTER TABLE `mira_user_ker_jog` ADD `riport_kapcsosszelist_keres_talszam` SMALLINT(2) UNSIGNED NOT NULL DEFAULT '5' AFTER `user_projektjovahagyohozza_keres_talszam`, ADD `riport_kapcsosszelist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'mira_tagv_kod.tagv_kod' AFTER `riport_kapcsosszelist_keres_talszam`, ADD `riport_kapcsosszelist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `riport_kapcsosszelist_keres_order`;
+
++ Riport 3.1.1 és 3.2 új kategória oszlop és pár oszlop aktuális DB-ből lekérdezése
+
++ Tevékenység rögzítés dátumhoz kötése
+	ALTER TABLE `projekt` ADD `projekt_kezd_date` DATE NULL DEFAULT NULL AFTER `projekt_title`, ADD `projekt_veg_date` DATE NULL DEFAULT NULL AFTER `projekt_kezd_date`, ADD INDEX (`projekt_kezd_date`), ADD INDEX (`projekt_veg_date`);
+
++ Datepicker Ma gomb ki is válassza a mai dátumot. (Fiona-ból)
+
+V1.065
+
++ Admin jogosultság: Felhasználó nevét (email címét, tsz számát) nem lehetett módosítani, ha van kezdeti dátuma, és az lezárásra került már
+
++ scroll-kor a tooltip bezárása (fiona funkció);
+
++ Átméretezéskor a select2 bezárása kerül
+
++ Admin tevékenységek export fejlesztése 2 füllel. Élesbe visszaportolva.
+
++ projekt textarea autosize kikapcsolva, mert kilóghat a képernyőből.
+
+V1.064
+
++ CSS select2-dropdown legyen egy kis árnyék.
++ maximizeSelect2Height és dropdownCssClass: "bigdrop", hogy na legyen a select2 lista
++ ablak átméretezésekor nem lett volt dialogok_atmeretezes(), FIONA-ból átvéve a müködési modellt már van.
++ jquery.dialogOptions.js megszüntetése, nincs rá szükség
+
+V1.063
+
++ Statisztika módulban hónap váltáskor '' lett a user, és ALL kellett volna
+	Hónap váltáskor a user mindig törlődik
+
++ Tevékenység lista 250 limitének eltörlése
+	Továbbá a $_POST['q'] kivétele, ugyse kap paramétert.
+
++ Másolás funkció: Másolás után nem töltötte újra a TAB-t, rosszul érzékelte, hogy van-e tab vagy nincs.
+ 62-be visszaportolva
+
+V1.062
+
++ nap osszítésnél nincs egyneként tooltip, csak a végén
+
++ hó összensél lent nem volt látható a táblázat egér rámutatáskor.
+
++ PHP 8.2 strtoupper - mb_strtoupper
++ PHP 8.2 strtolower - mb_strtolower
+
+V1.061
+
++ ténybetöltő - MIRA kívüli adatok
+ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_tenypotlas_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_tervezes_mod`;
+ALTER TABLE `mira_user_ker_jog` ADD `admin_tenypotlaslist_keres_talszam` MEDIUMINT(3) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_tervezeslist_keres_order_mod`, ADD `admin_tenypotlaslist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'backup_tenypotlas.backup_tenypotlas_tagv' AFTER `admin_tenypotlaslist_keres_talszam`, ADD `admin_tenypotlaslist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_tenypotlaslist_keres_order`;
+
++ backup_tenypotlas DB tábla átmásolása a tesztekre és élesre
+
++ Admin user exel export: Admin jogok fül bítése (3 új admin művelettel)
+
++ backup_tenypotlas táblában lévők hozzáadása a terv-tény riporthoz
+
++ Riport Tény-terv esetén a nullás tényeknél a tervek is ottvannak
+
++ Riport terv-tény szervezeti agregált
+
++ Riport átalakítás tény-terv havira
+
+V1.060
+
++ Hibajavítás csak az utolsó DB verzión.
+
++ Hibajavítás az éles DB is írja át!
+
+V1.059
+
++ Rögzítés hibajavítása modul
+	- ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_hibajavitas_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_honapzaras_mod`;
+
++ Jqueryui 1.14.0 éles
+
++ simplexlsx read update 1.1.11
+
+V1.058
+
+- TÉNY-TERV eltérés - 3
+	+ ALTER TABLE `mira_user_riport` CHANGE `riport_tipus` `riport_tipus` ENUM('nonp','tervteny','teny3_1_1','teny3_2','teny3','kapcs_ossze','teny3_elteres') CHARACTER SET utf8mb4 COLLATE utf8mb4_hungarian_ci NOT NULL;
+
+- Tevékenység - CO objektum mező. 10 karkater
+ + Részletesebb statisztika
+ - ALTER TABLE `projekt` ADD `projekt_co` VARCHAR(10) NULL DEFAULT NULL AFTER `projekt_kat_id`;
+	(250-ről 200-racsökkent 3 select mező, és havonta rögzíthető max óra is lerövidítettem)
+
++ Admin új szerveezetnél tevékenységnél szűrés után csak a képernyőn megjelenők lesznek bepipálva az összesnél.
+	
++ Riport fül Terv típusnál legyen részletesség-nél
+	- Havi bontással
+	- Időszaki agregálással
+	- Tagv és szolg kód hosszú neve.
+
+ -+ Új admin felület: Terv típusok (Terv, FC3, FC5, FC9 stb....)
+  
+ + Terv betöltés
+	- Év választás az alap - Olyan év választható csak, amihez van backup betöltve (legalább 1)!
+	- Betöltés meglévő verzióhoz felülírással.
+	- Vagyúj verzió bevitele
+
++ riport társaság és szolgáltatás lista az élesből legyen.
+
++ társasági adatoknál legyen olyan tulajdonosi joggyakorló hogy nincs!
+	És akkor az összerendelésnél jöjjön fel mindig az összes
+	Nincs
+
++ ALTER TABLE `mira_user_ker_jog` ADD `admin_tervezeslist_keres_talszam` MEDIUMINT(3) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_kapcsosszelist_keres_order_mod`, ADD `admin_tervezeslist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'backup_terv_tipus.backup_terv_tipus_id' AFTER `admin_tervezeslist_keres_talszam`, ADD `admin_tervezeslist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_tervezeslist_keres_order`;
+
++ ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_tervezes_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_kapcsossze_mod`;
+
+
++ Excel találati lista exportálás 100.000 darabra emelése.
+
+V1.057
+
++ Rejtett funkció: Dátmra kattintva nap másolás funkció.
+
++ Társasági kapcsolattartók műveletnél a szolgáltatás legördülőmenüben csak azok a szolgáltatások jelenjenek meg, aminek a 4 jegyű kódjánál az első két karakter ’EG’, ’SL’, ’KK’, a többi ne.
+
++ Kapcsolattartó törzsadatok fülön nem akarunk vmi mező kontrollt a telefonszám és az emailcím bevitelre? Most pl csupa betű is lehet a telefonszám, akár 80 szám is lehet a telefonszám, emailcím lehet @ nélkül, pont nélkül (.hu vagy .com vagy .co.uk, vagy akármi pedig kell az emailcímbe). Ha nem túl bonyolult, akkor vmi minimális határokat szabjunk ennek, de ha túl bonyolult, akkor el tudunk indulni így is.
+
++ Kapcsolattartó riportban is az összefűzött mezős megoldást kéne alkalmazni a tulajdonosi joggyakorló oszlopban, mint a kapcsolattartó 1. számú munkáltatója esetén, hogy pl „ÜVH – Üzleti vezérhelyettes”, kód, space, vonás, space, teljes név. Ha megoldható, akkor légy szíves térjünk át erre.
+
+V1.056
+
++ Új riport
+
++ Riport 3.11 és 3.2 AD költséghely beépítése
+
++ mira_tagv_kod bővítése
+//Új:
+ALTER TABLE `mira_tagv_kod` ADD `tagv_kod_adoszam` VARCHAR(30) NULL DEFAULT NULL AFTER `tagv_kod_nev`, ADD `tagv_kod_cim` VARCHAR(255) NULL DEFAULT NULL AFTER `tagv_kod_adoszam`, ADD `kapcs_tulaj_kod` VARCHAR(10) NULL DEFAULT NULL AFTER `tagv_kod_cim`, ADD `tagv_kod_kapcs_torzs_id_vezeto_1` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `kapcs_tulaj_kod`, ADD `tagv_kod_kapcs_torzs_id_vezeto_1_t` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `tagv_kod_kapcs_torzs_id_vezeto_1`, ADD `tagv_kod_kapcs_torzs_id_vezeto_2` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `tagv_kod_kapcs_torzs_id_vezeto_1_t`, ADD `tagv_kod_kapcs_torzs_id_kapcstarto` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `tagv_kod_kapcs_torzs_id_vezeto_2`, ADD INDEX (`tagv_kod_kapcs_torzs_id_vezeto_1`), ADD INDEX (`tagv_kod_kapcs_torzs_id_vezeto_1_t`), ADD INDEX (`tagv_kod_kapcs_torzs_id_vezeto_2`), ADD INDEX (`tagv_kod_kapcs_torzs_id_kapcstarto`), ADD INDEX (`kapcs_tulaj_kod`);
+ALTER TABLE `mira_tagv_kod` ADD FOREIGN KEY (`kapcs_tulaj_kod`) REFERENCES `kapcs_tulaj`(`kapcs_tulaj_kod`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `mira_tagv_kod` ADD FOREIGN KEY (`tagv_kod_kapcs_torzs_id_vezeto_1`) REFERENCES `kapcs_torzs`(`kapcs_torzs_id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `mira_tagv_kod` ADD FOREIGN KEY (`tagv_kod_kapcs_torzs_id_vezeto_1_t`) REFERENCES `kapcs_torzs`(`kapcs_torzs_id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `mira_tagv_kod` ADD FOREIGN KEY (`tagv_kod_kapcs_torzs_id_vezeto_2`) REFERENCES `kapcs_torzs`(`kapcs_torzs_id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `mira_tagv_kod` ADD FOREIGN KEY (`tagv_kod_kapcs_torzs_id_kapcstarto`) REFERENCES `kapcs_torzs`(`kapcs_torzs_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+//Régi:
+ALTER TABLE `mira_tagv_kod` ADD `tagv_kod_adoszam` VARCHAR(30) NULL DEFAULT NULL AFTER `tagv_kod_nev`, ADD `tagv_kod_cim` VARCHAR(255) NULL DEFAULT NULL AFTER `tagv_kod_adoszam`;
+ALTER TABLE `mira_tagv_kod` ADD `tagv_kod_kapcs_torzs_id_vezeto_1` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `tagv_kod_nev`, ADD `tagv_kod_kapcs_torzs_id_vezeto_2` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `tagv_kod_kapcs_torzs_id_vezeto_1`, ADD `tagv_kod_kapcs_torzs_id_kapcstarto` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `tagv_kod_kapcs_torzs_id_vezeto_2`, ADD INDEX (`tagv_kod_kapcs_torzs_id_vezeto_1`), ADD INDEX (`tagv_kod_kapcs_torzs_id_vezeto_2`), ADD INDEX (`tagv_kod_kapcs_torzs_id_kapcstarto`);
+ALTER TABLE `mira_tagv_kod` ADD `tagv_kod_kapcs_torzs_id_vezeto_1_t` MEDIUMINT(3) UNSIGNED NULL DEFAULT NULL AFTER `tagv_kod_kapcs_torzs_id_vezeto_1`, ADD INDEX (`tagv_kod_kapcs_torzs_id_vezeto_1_t`);
+
+
++ mira_user_ker_jog tábla bővítése a 3x3 értékkel.
+Ez még csak a DEV-n van!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Akkor vidd átt ha oké az érékek (rend tulaj lista!
+
+ALTER TABLE `mira_user_ker_jog` ADD `admin_kapcstulajlist_keres_talszam` MEDIUMINT(3) NOT NULL DEFAULT '5' AFTER `admin_katnevlist_keres_order_mod`, ADD `admin_kapcstulajlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'kapcs_tulaj.kapcs_tulaj_kod' AFTER `admin_kapcstulajlist_keres_talszam`, ADD `admin_kapcstulajlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_kapcstulajlist_keres_order`, ADD `admin_kapcstorzslist_keres_talszam` MEDIUMINT(3) NOT NULL DEFAULT '5' AFTER `admin_kapcstulajlist_keres_order_mod`, ADD `admin_kapcstorzslist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'kapcs_torzs.kapcs_torzs_nev' AFTER `admin_kapcstorzslist_keres_talszam`, ADD `admin_kapcstorzslist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_kapcstorzslist_keres_order`, ADD `admin_kapcsosszelist_keres_talszam` MEDIUMINT(3) NOT NULL DEFAULT '5' AFTER `admin_kapcstorzslist_keres_order_mod`, ADD `admin_kapcsosszelist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'kapcs_ossze.tagv_kod' AFTER `admin_kapcsosszelist_keres_talszam`, ADD `admin_kapcsosszelist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_kapcsosszelist_keres_order`;
+
++ Tulajdonosi joggyakorló lista DB létrehozása
+CREATE TABLE `kapcs_tulaj` (`kapcs_tulaj_kod` VARCHAR(10) NOT NULL , `kapcs_tulaj_nev` VARCHAR(255) NOT NULL DEFAULT '' , `kapcs_tulaj_inaktiv` ENUM('0','1') NOT NULL DEFAULT '0' , PRIMARY KEY (`kapcs_tulaj_kod`), INDEX (`kapcs_tulaj_nev`), INDEX (`kapcs_tulaj_inaktiv`)) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_hungarian_ci;
+
+
++ 3 új admin fül.
+ALTER TABLE `mira_user_admin_jog` ADD `admin_jog_admin_kapcstulaj_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_honapzaras_mod`, ADD `admin_jog_admin_kapcstorzs_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_kapcstulaj_mod`, ADD `admin_jog_admin_kapcsossze_mod` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `admin_jog_admin_kapcstorzs_mod`;
+
++ Csak riport fül jog esetén is legyen tabozás.
+
+V1.055
+
++ $_SESSION[$GLOBALS['sessionname']]['tagv'] megszüntetése
+	És még pár $_SESSION azonosító is...
+
++ Admin jogosulság excel exportra 2. fül, amin jogosultságokkal
++ Admin jog modulokra bontása
+
++ Jelenlegi admin jog átnevezése rendszer admin jogra
+
+
+V1.054
+
++ Excel export a rögzítő felületre.
+
++ Lezárt hónap esetén is látható a tevékenység megjegyzése
+
++ admin jogosultaág: Keresés név ésAD-re már az első oldalra lapoz
+
+V1.053
+
++ SAP 3.1.1 és 3.2 riportokba (admin felületen is) SM kód beépítése
+
+V1.052
+
++ simplexlsx read update
++ Riport fülre 3.1.1, 3.2 és 3 statisztikát
++ Ezeknél legyen összes hónap is. És ez tartalmazza a hónap értékét is
++ és a tagvállalat nevét is
++ Aktuális tevékenység kódját is.
+
+V1.051
+
++ Riport a fül neve.
++ Riport: Nonproduktív riport
+
+
+
++ Szervezeti csoportosítási  név
+	- Új admin felületen megadjunk.
+	- Új tábla létrehozása: mira_szerv_csoport
+	- mira_szerv táblában új mező létrehozása, idegen kulcs beállítása
+		ALTER TABLE `mira_szerv` ADD `szerv_csoport_id` SMALLINT(2) UNSIGNED NULL DEFAULT NULL AFTER `szerv_szolg_kod`, ADD INDEX (`szerv_csoport_id`);
+	
++ Tevékenységhez tartozó kategória kódokat.
+	- Új tábla létrehozása: 
+	- projekt táblában új mező létrehozása, idegen kulcs beállítása
+		ALTER TABLE `projekt` ADD `projekt_kat_id` SMALLINT(2) UNSIGNED NULL DEFAULT NULL AFTER `projekt_sm_kod`, ADD INDEX (`projekt_kat_id`);
+
++ backup_ver_default bevezetése.
+	Ez szabályozza ahogy az adott hónap látható-e és ha igen, melyik mentésből!
+ALTER TABLE `backup_ver` ADD `backup_ver_default` ENUM('0','1') NOT NULL DEFAULT '0' AFTER `backup_ver_ver`, ADD INDEX (`backup_ver_default`);
+
++ Új tevékenység felhasználónál új módszer (lapozás...katt)
+
++ TCPDF update 6.6.5 -> 6.7.4 (PDF21-PDF22)
+
++ Társasági SAP kód admin excel export
++ Szolgáltatás kód admin excel export
+
++ Szervezet adminisztráció: Keresés Csoportosítási név szerint.
++ Tevékenység adminisztráció: Keresés Kategória szerint.
+
++ SM kód javítása projektből szervezethez
+	ALTER TABLE `mira_szerv` ADD `szerv_sm_kod` VARCHAR(6) NULL DEFAULT NULL AFTER `szerv_csoport_id`;
+
++ Új mezők admin felülethez létrehozása
+ALTER TABLE `mira_user_ker_jog` ADD `admin_csopnevlist_keres_talszam` MEDIUMINT(3) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_szolgkodlist_keres_order_mod`, ADD `admin_csopnevlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'mira_szerv_csoport.mira_szerv_csoport_nev' AFTER `admin_csopnevlist_keres_talszam`, ADD `admin_csopnevlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_csopnevlist_keres_order`, ADD `admin_katnevlist_keres_talszam` MEDIUMINT(3) UNSIGNED NOT NULL DEFAULT '5' AFTER `admin_csopnevlist_keres_order_mod`, ADD `admin_katnevlist_keres_order` VARCHAR(50) NOT NULL DEFAULT 'mira_tagv_kod.tagv_kod_nev' AFTER `admin_katnevlist_keres_talszam`, ADD `admin_katnevlist_keres_order_mod` VARCHAR(4) NOT NULL DEFAULT 'asc' AFTER `admin_katnevlist_keres_order`;
+
++ Új backup táblák
+	backup_szerv_csoport
+	backup_projekt_kat
+	backup_projekt_szerv
++ Új backup mezők
+	backup_pojekt
+		ALTER TABLE `backup_pojekt` ADD `projekt_kat_id` SMALLINT(2) UNSIGNED NULL DEFAULT NULL AFTER `projekt_sm_kod`;
+	backup_szerv	
+		ALTER TABLE `backup_szerv` ADD `szerv_csoport_id` SMALLINT(2) UNSIGNED NULL DEFAULT NULL AFTER `szerv_szolg_kod`;
+	backup_user
+		ALTER TABLE `backup_user` ADD `ful_stat_projekt_all` ENUM('0','1') NULL DEFAULT NULL AFTER `ful_stat_all`, ADD `ful_stat_terv` ENUM('0','1') NULL DEFAULT NULL AFTER `ful_stat_projekt_all`;
+V1.050
+
++ Tény 3 excelben 2  új oszlop társaság neve és tevékenység neve.
++ Tény 3 excelben az eltérés 2 tizedes pontosság
+
+
+V1.049
+
++ tömeges jóváhagyások _  helyett $_$ elválasztás, mert tömeges jóváhagyáskor
+
++ select2 bevezetése több helyen. User admin felületen.
+
++ SAP SM kód oszlop
+ALTER TABLE `projekt` ADD `projekt_sm_kod` VARCHAR(6) NULL DEFAULT NULL AFTER `projekt_szolg_kod`;
+
++ tagv_kod és szolg_kod db összerendelés idegen kulcssal teszt és élesítés után
+
++ Milyen tagv nincsenek felvéve
+SELECT  projekt.projekt_tagv_kod 
+FROM `projekt` 
+left join mira_tagv_kod ON mira_tagv_kod.tagv_kod = projekt.projekt_tagv_kod
+WHERE `projekt_tagv_kod` != '' 
+and mira_tagv_kod.tagv_kod is null
+ORDER BY `projekt`.`projekt_tagv_kod` ASC
+
+
++ Terv DB fejlesztés
+
++ Szétbontás 12,80 tizedes. (vagy több)
+
++ hónap zárásnál év szűrés lehetősége
+
+V1.048
+
+ + Terv DB fejlesztés
+
+V1.047
+
++ Tevékenység megjegyzés ikon piros, ha nincs fekete.
+
++ Tevékenység keresés alapértelmezésben csonkoltan keres
+
++ Inaktiv szervezeti jóváhagyó nem fog levelet kapni.
+
++  Ha nincs az adott hónapban munkanap, akkor nem lehetséges a lezárása.
+
++ simplexlsxgen 1_4_10
+
++ Új és módosítás Tevékenység neve: max 100
+
++ Szervezet adminisztráció: Új és módosításnál: Szervezeti szolgáltatás kód
+	max 4 hosszú, és kötelező
+
++ Tevékenység adminisztráció: új és módosítás esetén új mező: Társasági SAP kód
+	max 4 hosszú, és kötelező
+
++ Tevékenység adminisztráció: Új és módosításnál: Tevékenységek szolgáltatás kód 
+	max 4 hosszú, és NEM kötelező
+
++ Fenti 3 új mező felvétele a 3 admin export programba
+	+ Szervezet adminisztráció: Szervezeti szolgáltatás kód
+	+ Tevékenység adminisztráció: Társasági SAP kód
+	+ Tevékenység adminisztráció: Tevékenységek szolgáltatás kód
+
++ Részletesebb excel: Új oszlopok
+	+ I: Társasági SAP kód
+	+ J: Szervezeti szolgáltatás kód
+	+ K: Tevékenységek szolgáltatás kód
+	+ L: Aktuális szolgáltatás kód (ha van a K oszlopban érték, akkor az, ha üres, akkor meg ami a J oszlopban van, akkor az. Sima számított mező)
+	+ N: Hónap (Csak szám 1,2..12)
+
++ Excel betöltőt minta tömeges betöltéshez
+	Excel fájl és SQL fügvényt írunk hozzá.
+
++ isIE() támogatás megszüntetése
+
+SQL kódok a mező bővítéshez:
+ALTER TABLE `projekt` ADD `projekt_tagv_kod` VARCHAR( 4 ) NULL DEFAULT NULL AFTER `projekt_title` ,
+ADD `projekt_szolg_kod` VARCHAR( 4 ) NULL DEFAULT NULL AFTER `projekt_tagv_kod`
+;
+ALTER TABLE `mira_szerv` ADD `szerv_szolg_kod` VARCHAR( 4 ) NULL DEFAULT NULL AFTER `szerv_adkod`
+
+
+V1.046
+
+ + idő módosításakor eltünt a megjegyzés mező. (Replace helyett módosítás)
+ 
+ + tevékenység select már várakozás nélkül azonnal ment
+ 
+ + tevékenység idő módosítás 300 helyett 100ms után ment el.
+
+V1.045
+
++ inp_auto_start_select2() átalakítása. sel2_futott csak success után állítom be.
+
++ statisztika javítása (CSV miatt volt szar)
+
++ simplexlsx update
+
++ tevékenységhez kötött megjegyzés
+
+ ALTER TABLE `rogzit_sor` ADD `rogzit_sor_megj` TEXT NULL DEFAULT NULL AFTER `helyettes_rogzito_ki`
+
+V1.044
+
++ Felettes jóváhagyó ha inaktív, akkor nem kap email értesítést
+
++ excel CSV statisztika ALL hónap esetén
+
++ autosize.js update
+
+V1.043
+
++ pdf21 update
+ 
++ Egész éves statisztika bevezetése
+
++ Szervezet módosítás visszatörlés nélkül.
+
++ ' " és = karakterek titlása kiens oldalon és szerver oldalon
+
+V1.042
+
++ ajax_mail_uj680.php update 671-ről
++ Kitöltő felület nem frissül ha tálcára rakod.
+
+V1.041
+
++ Rögzített adattal nem rendelkező felhasználónál a rögzítése vége dátum legyen figyelembe véve
+
++ Stat: Hó váltáskor a user lista is frissül
+
+V1.040
+
++ Rögzítő helyettes esetén a szerv_id a helyettesés volt, nem a useré
+
++ jquery update
++ simplxlsxgen update
+
+V1.039
+
+ + globalize kivezetése
+ 
+ + Megjegyzés mező több nap egymás kiakaszátsa javítása és 500ms 200ms  csökkentése
+
+ + Admin user Jóváhagyó jog ki-be pipáláa nem az aktuális userét, hanem az összes sort elrejtette.
+
+V1.038
+
+ + jquery 3.6.4 update
+
+ + projekt jóváhagyó visszaküldéskor projekt_jovahagyas_id hiányzott a jovahagy_proc_visszakuld_projvezeto fügvénynél
+
+ + Statisztika: rögzített adattal nem rendelkeztők esetén ne lehessen tevékenységre szűrni
+
+ + Ha nincs rögzítési jog, akkor a kezdeti dátumot el kell rejteni
+ 
+ + Rögzítési jog megadásnál figyelmeztető üzenet: Kezdeti dátumot le kell ellenörizni.
+
+ + Tab váltásnál tooltipelrejtése
+
+ + Új munkavállaló esetén ha a rögzítés kezdete hónap le van zárva, akkor hibaüzenet!
+
+V1.037
+ 
+ + Statisztika: Tablesort nem indul el, csak az első kattintáskor
+ 
+ + Statisztika:
+	Szevezet váltáskor a felhasználó Összesenre lesz állítva
+	Statisztika típusa már nem váltja az egész oldal, csak stat-t kéri le
+	User select2 már *valami* szerint keres
+		másik kettő simán, de *-al csonkoltan keres
+	select mezők szélessége igazítva
+
+
+ + dupla sroll javítás: Admin user, kellett width:
+ 
+ + Admin user jogosultság: Jogosultság szűrést megjegyezte, de nem volt kiválasztva!
+ 
+ + Admin user jogosultság: Új jogosultság szűrés: 
+	Szervezeti jóváhagyó
+	Szervezeti vagy felettes jóváhagyó
+ 
+ + Inaktiválásnál GYES visszatérő lezelése
+
+ + Rögztési jog bepipálásakor nem lett aktív a rögzítés kezete és vége mező
+
+ + user admin. Inaktív usereknél a rögzítés vége dátum kitölthető volt volt.
+	V1.036 visszaportolva
+	
+ + USER akvitálás esetén a mira_user_ker_jog táblát törölni kell és újralétrehozni.
+	replace parancssal
+	V1.036 visszaportolva
+	
+ + Statisztika: Lezárt hónappal nem rendelkező felhasználók
+	nem volt jó az sql, rögzített de le nem zártak nem voltak benne.
+	V1.036 visszaportolva
+
+V1.036
+
+ + Admin munkanap áthelyezés felhasználóra:
+	- Névlista tartalmazza a felhasználó Ad és törzsszámát is.
+	- Keresés AD és törzsszám alapján is müködik
+	- NÉV select szélesebb
+	- Max találati lista funkció:
+		10 darab default
+	
+ + Statisztika user keresés
+ 	- Névlista tartalmazza a felhasználó Ad és törzsszámát is.
+	- Keresés AD és törzsszám alapján is müködik
+ + Jóváhagyás  user keresés
+	- Névlista tartalmazza a felhasználó Ad és törzsszámát is.
+	- Keresés AD és törzsszám alapján is müködik
+
+ + Admin jogosultság statisztika. Régzítés kezdete és vége szerinti keresés
+
+ + Statisztika lekérés gyorsítás
+	Nincs kliens oldali ok$;$ szétbontás
+ + $.POST kéréseknél text paraméter megadása
+	Nincs meg mindenhol (csak  nagy kéréseknél)
+ + Admin user inaktiválás esetén a tooltip el kell rejteni!
+	Tevékenység inaktiválásnál is ez a teendő
+
+V1.035
+ + next_ho fügvény 01.30 nem volt jó, márciust adott, javítva
+
+ + Statisztikánál ha HTML lekérés van, akkor a feleslegesmezőket NE kérjük le
+	email cím, user_tsz, szerv_adkod, szerv_koltsegkod
+ + TAB fülek elnevezése
+	Csak TAB-ás esetén van fül elnevezés
+ + Böngésző előre-vissza gomb támogatása
+ + elekkuldh post-get csere (és max 66 futás)
+ + Statisztika gyorsítás
+	- projektszerv esetén csak projekt szerint rendezzük, szervezetet PHP-ban
+		ez nem volt szervzet szerint rendezett
+	- szerv-projekt esetén csak szervezet szerint rendezzük, projektet PHP-ban
+ + Excel letöltés gomb 1sec helyett 2sec tiltom
+ 
+ + tooltip_proc optimalizálás (ad infó áthelyezés admin fülre)
+ 
+ + Firefox böngésző .sel_proj fehér szín 
+ 
+V1.034
+ 
+ + login() már nem menti le mindig feleslegessen a $_SESSIOn adatokat.
+ 
+ + rogzit_ment késleltetésénék 150ms-ről 300-ra emelése
+
+ + rogzit_megj_ment_wait késletetése 300ms-ről 500-ra emelése
+ 
+ + rogzit_ment_proc futás javítás (success esetén nullázni, hogy ne legyen mindig abort
+ 
+ + osszesen_nap eddig csak a mentés után futtott le, de itt várakozás van
+	Most már előtte fut.
+ 
+ + Rögzítés: 0:00 nem lehet már félrekattintani, valami mindenképpen ki van jelölve.
+	bal de már jobb egér gombbal se
+
+ + Statisztika: Egész év esetén nincs napválasztás
+	V1.033 visszaportolva
+
+ + Jóváhagyás első alkalommal 2022 januárra ugrott át
+ 
+V1.033
+ 
+
+ 
+ + ajax .abort(); esetén adat megjövése után null értéket kell beállítani
+
+V1.032
+ 
+ - keres_user_van_nyitott_ho()  javítása, 0 is rögzítésnek számít!
+ 
+ + rogzit_table $_session csere $_globals-ra
+	$_SESSION[$GLOBALS['sessionname']]['szerv_id']
+ 
+ + Rögzítés közben inaktiválás: Logout
+	nincs tab esetén: fo_table_evho_elsoki: reload ha logout a válasz
+	tab esetén: ful_letolt-ful_rogzit logout
+ 
+ + admin_userlist_keres() 200ms várakozás
+	V1.031 visszaportolva
+ + admin user jogosultság: Keresés: Felettes jóváhagyó
+	V1.031 visszaportolva
+ + rögzítés max karakter 30 helyett 50
+	és maxlength bevezetése select2-re
+	V1.031 visszaportolva
+ + rögzítés tevékenység select2: újra lekérése, ha módostás történt egy másik tevékenységnél
+	Volt ilyen, de törölni kellett a listát
+	V1.031 visszaportolva
+ + rogzit_ment két nap módosítása eseté negymást kioltja
+	V1.031 visszaportolva
+
+V1.031
+
+
+
+ + blur  eseményre lefutó mentést kikapcsoltam! Hibát okozhat
+
+ + AD azonosító cserénél kisbetűsra alakítani.
+	V1.030 visszaportolva.
+ + új admin törzsszám max 8 maxlength, név-email 255
+ 
+ + Admin jogosultság kezelés: Szervezetet nem jegyezte meg! 
+ + Admin jogosultság kezelés: Törzsszám szerinti keresés
+ 
+
+V1.030
+ 
+ + Rögzítés: Tevékenység select limit: 150 helyett 250
+ 
+ + Statisztika: Tevékenység select legyen kereshető.
+ + Statisztika: Szervezet select legyen kereshető.
+ 
+V1.029
+
++ Statisztika jognál ha 1 vagy több szervezetre van joga, akkor összes szervezetnél az öszes user látható volt
++ Statisztika jognál ha 1 vagy több tevékenységre van joga, akkor összes tevékenységnél az öszes user látható volt
+
++ Statisztikánál (Web és excel) mysqli_close bevezetése
+	mysqli_close($GLOBALS['mysqli']);
+
++ Admin jogosultság kezelés - keresés - Jogosultaság szűrésnél új opciók
+	- Rögzítés jog - Igen
+	- Rögzítés jog - Nem
+
++ Admin szervezet-tevékenységhozzárendelésnél ALL gombnál legyen megerősítő kérdés
+ Ha ez nulla volt, akkor php hiba volt 0 méret miatt (sizeof)
++ Admin tevékenység-szervezet hozzárendelésnél ALL gombnál legyen megerősítő kérdés
+ Ha ez nulla volt, akkor php hiba volt 0 méret miatt (sizeof)
+
++ Admin szervezet exportálás 2 új munkalap
+1.028 visszaportolva.
+
++ tablesorter csere
+	$.isArray( -> Array.isArray(
+
+V1.028
+ 
+ + perc változátatás -+ gombokkal, nem lesz kijelölve perc az első kattintáskor
+ 
+ + rogzit_ment várakozás 300-ról 150-re csökentve
+ 
+ + rogzit_ment abort();
+	És ez még post fül betöltésnél, fo_table_evho_elsoki(),fo_table_ki(),jovahagy_infok_leker(,
+	rogzit_megj_ment(,rogzit_elkuld_ell(,
+	rogzit_elkuld_ell_proc_kerd_utan(,
+	rogzito_helyettes_beallit(),
+	rogzit_szabadsag_nem(,
+	rogzit_szabadsag_igen(,
+	stat_leker(),
+	stat_leker_ev_change(),
+	max_user_change(),
+	jovahagy_evvalt(),
+	jovahagy_keress(),
+	jovahagyuser_sor_mouse(,
+	jovahagy_proc_visszakuld_projvezeto(,
+	jovahagy_proc_visszakuld_projvezeto_kerd_utan(,
+	jovahagy_proc_visszakuld(,
+	jovahagy_proc_visszakuld_kerd_utan(,
+	jovahagy_proc_ok_projvezeto_kerd_utan(,
+	jovahagy_proc_ok_tom_projvezeto_kerd_utan(,
+	jovahagy_proc_ok_kerd_utan(,
+	jovahagy_proc_ok_tom_kerd_utan(,
+	jovahagy_kezi_lezaras_proc_kerd_utan(,
+	admin mindenhol..
+		
+ 
+ + Statisztika: max_user_change válotoztatáskor minden gombot letiltok
+ 
+ + CTRL+c esetén select();
+ 
+ + CTRL+v beillesz bármit a vágólapról!
+	Vizsgálom, hogy csak 1:00 és 10:00 formátumot enged bemásolni, mást nem
+	
+ + TAB
+	- ÓRAról percre átugrás
+	- Percről átugrás sehová
+ 
+ + mail cím alulra, 027-be visszaportolva
+ 
+V1.027
+
++ Új szervezetnél Felhasználók ablak nincs oldalazva
+
++ Tevékenység search optimalizálás. Rogizt_sor minek volt ott
+
++ Tevékenység leírása maximum 255 karakter lehet mostantól.
+
++ ABOURT ajax minden kereső mezőre
+
++ jquery 3.6.3 update
+
++ távollét oszlop eltüntetése
+	Paramter: Ennél nagyobb év-hónap-nál nem lesz látható.
+
++ Tevékenység lista maxium 150
+
++ Kitöltési útmutató és felhasználó kézikönyv link a rögzítés és jóváhagyó fülre
+
++ Statisztika kézikönyv link átalakítás .\ megoldásra
+
++ Email aljára: Autoamntkus levél, kérem ne válaszoljon rá.
+
++ email cím részletersebb és a felhasználók napi statisztikába
+
+
++ AD infó, ha nem D1234 formátumú, akkor MVMH legyen kihagyva!
+ 1.026 visszaportolva
++ email cím formati ellenőrzése új user mentésénél
+ 1.026 visszaportolva
++ email feladója noreply@mvm.hu
+ 1.026 visszaportolva
++ html st memória növelés ini_set('memory_limit','2768M');
+ 1.026 visszaportolva
+
++ rögzítés kezdete új user mentésekor már kötelező! És hibaüzenet is átalakítva
+ 1.026 visszaportolva 
+ 
++ dátum választó kezdeti ideje. 2020-01-01 helyett 2022-01-01
+ 1.026 visszaportolva 
+
++ December hónap lezárás nem lehetséges
+ 1.026 visszaportolva 
+ 
+V1.026
+
++ jquery 3.6.2 update
++ simplexlsxgen 1.310 update
++ autosize update
++ TCPDF20 update
++ ajax_mail_uj671.php update
++ tablesorter $.tablesorter.characterEquivalents kikapcsolva, enélkül is ok
++ Statisztika. Max felhasználók száma: új értékek: 500,1000,2000
++ Admin jogosultság: AD infó abourt()
+
+V1.025
+
++ Admin: AD azonosító módosítáának lehetősége
+
++ Ajax AD infó továbbfejlesztés:
+	Letiltott fiókok között is keres minden tartományban -> Ez új userre is érvényes!
+	Mutatja a letiltás-zárolás-lejárt státuszt.
+	Első oszlop vastag
+
++ Statisztika lekérés közben már select mezők is tiltva vannak, nem csak az submit gomb
+
++ Statisztika: Böngésző inaktiválása után ne legyen page reload
+
+V1.024
+
++ Admin: új tevékenységnél a szervezetek hozzáadásánál az összes kijelölése gomb.
+	Háttérben már csak szám látszik
++ Projekt leírásának mentése hibéra futtott ha a szöveg üres volt
+
++ Ha a rögzítés kezdete nagyobb mint +1 hónap, akkor ne legyen rögzítés joga a usernek.
+
++ Admin új felhasználónál volt autocomplete
+	disabled_auto_fill kikapcsolása, szükségtelen
+
+V1.023
+
++ Részletesebb statisztika mindkét költséghely megjelenítése.
+	Statisztika költséghely és AD költséghely néven
++ Admin felületen a szervzeti adminisztrációnál és az Excel exportban a költséghely oszlopk átnevezése
+	Statisztika költséghely és AD költséghely
++ Admin felületen a szervzeti adminisztrációnál AD költséghelyis kötelező már.
+
++ Rögzítő felületen nap választásnál nap (hétfő) megjelenítése)
+
++ Tömeges user betöltő
+
++ Tevékenység Select2 második megnyitásnál már nem volt focus a kereős mező
++ Lábléc alatti focus után is ESC-re be fog záródni az ablak
+
+V1.022
+
++ Admin user adminisztráció: Rögzítés vége dátum admin felületen megadható
++ Admin user adminisztráció: Rögzítés vége dátum tevékenység rögzítésnél már müködik
++ Admin user adminisztráció: Rögzítés vége dátum admin mellett törlés funkció. Ami törli a vége dátum utáni tevékenységeket.
+	De csak akkor ha nem volt egy lezárás se!
++ Admin user adminisztráció: Rögzítés vége dátum admin excel exportban is látható
+
+
++ Hónap végleges lezárás opció
+	+ Ekkor nem küldhető vissza se szakterület se projekt jóváhagyás
+	
+	
+
+
+V1.021
+ + admin js kikapcsoltam a cache funkciót
+ + Admin felületen szöveg javítás
+	Régi: Teljes jogosultság minden jelenlegi és jövőbeli projekthez
+	Új: Teljes jogosultság minden jelenlegi és jövőbeli tevékenységhez
+ +  Dialog ablakok átméretezése már jó
+ 
+V1.020
+ + Rögzítés megjegyzés mentés 100ms-ről 300ms növelve ésjavítva.
+
+ + MVMS átállás
+ + TCPDF frissítés
+ 
+ + ful_rogzit=0, akkor nincs tevékenység rögzítése fül
+ + ful_rogzit=0, akkor helyettesnek nem lehet beállítani!
+ + ful_rogzit=0, Ne kapjon emailt, hogy ninxs lezárva a hónapja
+ + ful_rogzit=0 Jóváhagyó felületen ne látszódjon
+	- search.php is ki kell venni!
+ + Admin felületen ful_rogzit=0 opció. Ekkor:
+	+ User minden rögzítő helyettesítése törlésre kerül
+ + ful_rogzit=0 csak akkor állítható be, ha a usernek nincs rögzítése
+ + Statisztika felkészítése a ful_rogzit=0 paraméterre
+ + Admin user jogosultság excel export: Igen/nem esetén a nem is kiírjuk
+ + Admin user jogosultság excel export bővítése
+	+ Rögzítés kezdete
+	+ Rögzítés jog
+ + Tevékenységhez ne lehessen hozzárendelni olyan user, akinek nincs rögzítése joga
+ + Tevékenységnél a találati listában lévő számhoz se legyen hozzászámolva
+ + Munkanap áthelyezés felhasználónál a listában ne legyen ott, akinek nincs rögzítési joga
+ + Admin: User inaktiválás csak akkor lehetséges, ha a felhasználónak nincs nyitott hónapja!
+
+ + Tevékenységen módosítok, akkor a perc növelés már +20 perc 10 helyett!
+
+ + PDF fájlnév módosítás: munkaido_ helyett programnév, és az év_ho is benne van
+
+ + Munkaidő rögzítésed visszaküldésre került!
+   helyett:
+   Tevékenység rögzítésed visszaküldésre került!
+
+ + rögzített idő mentésére 300ms késleltetés beállítva, hogy egér tekerésekor ne legyen terhelt a szerver
+
+ + jóváhgyás fülön visszaküldéskor vagy jóváhagyások a lista tetejére ugrik
+
+ + lap csak akkor töldődik újra, ha nincs nyitva Dialog ablak
+ 
+ + Statisztika se ugrál már fel -le (display:block kivétele és none php-ban)
+ 
+
+V1.019
+ + select2 javítás kiválasztás után frissíteni kell a listát!
+V1.018
+ Click helyett egér rámutatásnél szedem le a select listát.
+V1.017
+	- Projekt select2 lista csak az első megnyitáskor kommunikál a szerverrel.
+
+V1.016
+
+V1.015
+
++ Admin tevékenységek fül. Inaktív szervezeteknél is lehet látni és állítani a projektjóváhagyókat.
+
++ Visszaküldéskor ha nincs projektvezetői jóváhagyás és a jóváhagyó visszaküldi lezárás előtt, akkor a 2 szervezeti nem kap levelet.
+Csak amikor nincs projektvezető hibás, projektes jó!!!
+
++ Jóváhagyásnál Ha csak felettes szervezeti van és nincs sima szervezeti akkor nem látható a vastag szervezet szöveg
+
++ Admin user jog: Projekt számba bele kell számítani az inaktív projektek jóváhagyási számát is.
+
++ Admin user jog: Projekt jog avblakba legyenek ott az inaktív projektek is
+(inaktívb projektek (janktív) szöveggel jelölve)
+
+
++ User inaktiválása csak akkor legyen lehetséges, ha nincs projekt jóváhagyói joga!
+Felhasználó nem inaktiválható helyett user nevénem kiírása az ablakba
+
+V1.014
+
++ Mobil optimalizáció
+
++ Jóváhagyó fül javítása, ha csak projekt jóváhagyásod van, és nincs szervezeti
+
+V1.013
+
+,IF( projekt_jovahagyo.projekt_jovahagyo_id is not NULL, 1, 0 ) AS van_e_projekt_jovahagyo
+
+,IF( rogzit_ho_projekt.rogzit_ho_projekt_id is not NULL, 1, 0 ) AS projekt_jovahagyas_megtortent_e
+
+,IF( (rogzit_ho_projekt.rogzit_ho_projekt_id is NULL) and (projekt_jovahagyo.projekt_jovahagyo_id) is not NULL, 1, 0 ) AS kell_e_meg_projekt_jovahagyas
+
+
++ Élesítésnél akinek van stat_all joga, annak legyen a stat_projekt_all is 1 joga
+	Kezdeti adat feltöltés!
+
++ User inaktíválása ne legyen lehetséges, ha 1 szervezethez Ő az egyedüli jóváhagyó
+
++ Jogosultság adminisztrációnál a felhasználó szervezeti jóváhagyása nem törölhető, ha az adott szervezetnél Ő az egyetlen jóváhagyó
+
++ Szervezet jóváhagyó módosítása szervezet fülön
+Ne lehessen mindenkit törölni. Vagyis ne maradjon egy szervezet jóváhagyó nélkül!
+
++ Ha felettes jóváhagyóként zártam le más rögzítését, úgy hogy a rögzítő felületen más volt kiválasztva, akkor hibás jóváhagyó név került lementésre
+
++ Felhasználó inaktiválásakor törlésre kerül a összes felettes jóváhagyó beállítása.
+Tehát ha X inaktiválom és neki Y a felettes jóváhagyója, akkor ez törlésre kerül.
++ Felhasználó inaktiválásakor törlésre kerül az összes felhasználó alól az Ő felettes jóváhagyói beállítása
+Tehát ha X inaktiválom és ő Y-nak a felettes jóváhagyója, akkor ez törlésre kerül!
+
++ Rögzítő felületen egy tevékenységre történő 10:00 óra feletti rögzítés esetén kézzel nem lehetett kétszámjegyű percet beírni.
+
++ Rögzítő felületen, ha napi max rögzítőhető pl: 12:00 óra, akkor kézzel lehetett egy tevékenységhez 12:01 rögzíteni. Hónap lezárásakor hibaüzenet eddig is jól működött, de a felhasználót segítve mostantól 12:01 már nem lehet berögzíteni, rendszer átírja 12:00-ra
+
++ Rögzítés kezdete
+	Admin felület, rögzítő felület jóváhagyás, statisztiak módosítása
+	PDF válozatatlan
+
++ Admin munkanap áthelyezés felhasználóra:
+Pihenőnap mentésekor (és csak ekkor) nem figyeltem azt, hogy van-e rögzítve erre a napra.
+Mostantól mentéskor is figyelem, és csak akkor menthető el, ha az adott usernek erre a napra nincs rögzítése
+(0:00 is rögzítésnek számít!)
+(Törléskor eddig is volt figyelés. Hétvégi munkanap törlése miatt)
+
++ Admin user jogosultság. Oszlop átnevezés
+	Helyettes -> Rögzítő helyettes
+	Ablak title szövege: Helyettes beállítása->Rögzítő helyettes beállítása
+	Helyettes beállítása Nagy Imre felhasználóhoz -> Rögzítő helyettes beállítása Nagy Imre felhasználóhoz
+
++ Helyettes listát is lehet már Excel-be exportálni
+
++ Admin user jogosultság. Oszlop sorrend változás
+
++ Admin user jogosultság. Pl: Stat jog dialog ablaknál héttérben a csúszka a helyén marad
+
+
++ Részletesebb Excel oszlop név módosítása
+	- Visszaküldve -> Szervezet által visszaküldve
+	- Visszaküldő -> Szervezeti visszaküldő
+	- Visszaküldés ideje -> Szervezet visszaküldés ideje
+	- Jóváhagyva -> Szervezeti jóváhagyás
+	- Jóváhagyó -> Szervezeti jóváhagyó
+	- Jóváhagyás ideje -> Szervezeti jóváhagyás ideje
+
++ Részletesebb Excel új oszlopok
+	-  Projekt jóváhagyó által visszaküldve
+	-  Projekt jóváhagyó visszaküldő
+	-  Projekt jóváhagyó visszaküldés ideje
+	-  Projekt jóváhagyás
+	-  Projekt jóváhagyó
+	-  Projekt jóváhagyás ideje
+
++ Admin jogosultság fülön tudja jogot adni statisztikára inaktívált szervezetre is
+	
++ Statiszikánál az inaktív szervezetek is megjelennek már
+ (Inaktív) név kiegészítéssel!
+
++ Admin statisztika jog projekt jogra való szűrése
+	Itt inaktív projektre is lehet jogot adni!
+
++ Admin munkanap áthelyezés felhasználóra:
+	user kötelező mező, de eddig nem volt jó a figyelmeztetés Mentés gombra kattintva.
+	Javítva
+
++ Jóváhagyó fül átnevezés: Lezárás oszlopban
+Régi: Jóváhagyói lezárás
+Új: Szervezeti jóváhagyói lezárás
+
++ Rögzítő felület, Jóváhagyásra vár infó gomb!
++ Jóváhagyó fül, jóváhagyás infó gomb!
+
++ Jóváhagyó fül, jóváhagyás után Jóváhagyta -ra egérrel ráálva, már nincs TITLE
+
++ Admin jogosultság fülön a Jóváhagyáshoz kapcsolódó beállításokat (Szervezeti és projekt jóvéhagyások és email beállítások) mostantól csak akkor állítható, ha van joga a jóváhagyás fülre
+
++ Email értesítések
+	- Rögzítés lezárása után értesítést:
+		- Ha nincs projektvezető, akkor a szakterületi vezető(k )az első alkalommal nem kap emailt?
+			- Minden további alkalommal kap?
+		- Ha van projektvezető, akkor Ők mindig kapnak email értesítést.
+		+ Mindig kap mindig mindenki
+	- Ha több projektvezető van és az első jóváhagyta, de utánna rögtön visszaküldi:
+		- Akkor a többi függésben lévő projektvezető is kap értesítést a visszaküldésről?
+		- Ha az első alkalom a visszaküldésre, akkor a szakterületi vezető is kapjon?
+			(Jelenleg csak az felhasználó kap)
+			+ Szakterületi vezető is kapjon email-t. Másolatot kap-ban.
+	- Ha a szakterületi vezető visszaküldi, akkor
+		- Projektvezetők is kapjanak email értesítést?
+		- Többi szakterületi vezető? Jelenleg: Csak a felhasználó kap!!!
+		+ Igen kap.
+	- Ha az összes projektvezető jóváhagyja, akkor
+		- Szakterületi vezető minden (első) alkalommal kap email értesítést?
+			Ez nem lesz zavaró? Hogy nem kap mindig?
+			+ Igen kap.
+	- Ha munkavállaló lezárta, nincs projektvezető, de a  szakterületi vezető nem hagyta még jóvá
+		És Admin beállított egy új projektvezetőt, akkor Ő nem fog email értesítést kapni!
+		Ugyan ez vonatkozik az új Szakterületi vezetői beállítására is!
+
+
+
+
++ Böngésző Tab váltáskor az összes dialog ablakot bezárásra kerül!
+Háttérben lévő adatok frissítésre kerülnek már régóta, így nem szabad nyítva lenne a Dialog ablaknek se.
+
+
++ Dupla csúszka javítása
+
+
+
+
+V1.012
++ Felettes jóvéhagyó már jó a statisztika résznél.
+
++ Jóváhagyás: all_f hossz miatt nem jegyezte meg, javítva 
+
++ jóváhagyásnál tootlip ajax gyorsítása. Csak egyszer kéri le..
+
++ Statisztika és jóváhagyásnál a vége hónap minig december volt.
+Javítva +1 hónapra.
+Hiba ugyan az volt mindkét helyen.
+
+Régebiiek:
+
++ Projekt név *valami keresés
+
++ 1:63 kézi beírásának lekezelése: 1:60 cserélése.
+	De inkább 2:00-ra
+
++ nap összes prpojektének törlése: Összesítés fül nem törlődik
+
++ Kettő projkt van, és a sor is törlődik!
+rogzit_table.php 111 sor, nem figyelem a sorok számát!!!
+
++ Szervezet módosítása: összes projekt kijelölése pipa lehetőség
+
++ Új projekt hozzáadása vagy módosítása: összes szervezet kijelölése pipa lehetőség
+
++ Projekt nevéhez sugó leírás, TITLE mezőben rögzítő felületen.
+  Ha nincs kitöltve, akkor a neve
+
++ Szervezethez 1 új mező
+	: Költséghely kód (Statisztikához)
+
++ Szervezethez 1 új mező
+	: Szervezeti egység kódja (AD kiválasztáshoz)
+
++ User hozzáadásánál ha van szervezeti egység kódja, akkor a listából legyen kiválasztva ez a szervezet
+
+- Jóváhagyásnál azon sorok kékítése, amire rákattintottunk
+ tömegesnél akiket jóvá lehet hagyni
+
+
++ Elküldés lezárása rögzítő felületre.
+
++ Jóváhagyás lekezelése
+
++ Második elküldés után email az ellenörzésre jogosultnak.
+
++ Tevékenység projekt helyett
+
++ Jóváhagyás email csak azoknak, akiknek fül jogouk is van!
+
++ Minimum 1:00 cég globális
+
++ Maximum usrenként felül lehessen bírálni.
++ Admin jogosultság fülön plusz keresési lehetőségek
+
+
++ Szervezet inaktíválása csak akkor lehetséges, ha nincs hozzá user rendelve
++ Emiatt user módosításnál az inaktív szervezetket már nem kell megmutatni.
+
+
++ Szervezetnél jóváhagyók állításakor visszaugrik az első oldalra.
+
++ PDF
++ PDF havi összesen a lap aljára
++ PDF napi összesítés
+
++ Jóváhagyás állítása usernél. Szervezetenként...
+
++ Statisztikák: Táblázatnak legyen fent is csúszkája!
+
++ Statisztiak: Felhasználók napi összesítése és napi összesítésben a távollét megjelenítése!
+ Exceltem nem, mert ott ha ez van, nem lehet összeadni.
+
++ Statisztika, legyen Tevékenység szerinti szűrés?
+
++ Statisztika egy adott nap
+
++ Statisztika HTML-nél összesítés
+
++ Statisztika napok lekezelése hónapok szerint javascript oldalon?
+
++ Jóváhagyó le tudja zárni ugy a hónapot, úgy hogy nem felel meg a feltételeknek!
+
++ Statisztika 1 userre, ha tevékenyég-szervezenél 1 hónapban 2 szervezetnél dolgozott.
+Látszik?
+
++ rögzítésnél távollét, és a magasság csökken. Ekkor ne változzon
+
++ Jóváhagyásnál névre keresés
+
++ Jóváhagyásnál névre rendezés
+
++ Jóváhagyásnál a választott szervezet, név, év-hónap megjegyzése
+
++ Statisztika értékek megjegyzése
+
++ Ha nincs tab, csak sima user, akkor legyen középre igazítva a táblázat
+
++ Részletesebb excel statisztikában a sor rögzítésének idejének megjelenítése
+
++ Excel statisztika: Részeltesebb-néla teljes dátumformátum lekezelése
+
++ Jóváhagyásnél lezáró dátumnál megjeleníteni, hogy jóáhagyó hagyta jóvá.
+
++ Helyettes select háttérszín változtatása ha helyettes van!
+
++ Helyettes rögzítő beállítás csak saját magadra lehetséges!
+Védelem a dialog mentéskor és a kirajzolásos felületen is. (ne legyen gomb)
+
++ Tevényeség select betűtípus, ha nincs TAB-d
++ Tevényeség idő doboz nagysága ha nincs TAD-d, akkor jó, TAb-al kicsit ksiebb lesz.
+
++ Admin user-es dialog hozzárendeléseknél legyen lapozári lehetőség.
+Mert egyszerre sok usert nem kellene megjeleníteni.
+
++ Évváltás két helyen (ajax.php) és a táblázatnál is lementődik?
+	Nem csak első alkalom fu le ott
+
++ Mai nap kiemelt zöld szín mással.
+
++ Admin: userhez köthető maximális idő nem lehet kevesebb mint a céghez rendelt minimum idő
+ már kész...
+
++ Helyettes
+
++ Tevékenység hozzárendelés a Adorjánné Molnár Beáta felhasználóhoz
+a névelő felesleges, de több helyen is lehet ilyen
+
++ Statisztika és jogosultság fül jogosultság ellenőrzése
+Admin, és rögzítő fül is Utóbbinál reload ha inaktív az user.
+
++ Egér tekerőjánél ne a perc változzon, hanem ahol áll a kurzor!
+
++ Mentésnél óra+perc összeadás megtörténik-e? vagyi 80 percnél 1 óra 20 perc legyen lementve!
+
++ Jóváhagyásnál az user lista összes jogosult szervezetnél ne az egész cég legyen, hanem csak amire jogom van.
+
++ Jóváhagyásnál  nem lehet évet választani, 2021-nél ragad!
+
++ Jóváhagyásnál Kezdő hónap és figyelj ha évet válatasz (Január 2021-2020)!
+
++ Jóváhagyásnál a tooltip legyen táblázat-os
+
++ Excel táblázatba 8,5 órát is. 
+
++ Helyettes találati lista excel exportálás
+	Admin és user felületről is.
+
++ Szervezethez rendelt jóváhagyók excel exportálása
+
++ Tevékenséghez rendelt felhasználók exportálása
+
++ Tevékenység típusának elfejtése, szerintem nem kell!
+
++ Statisztika részletesebb megjegyzés mezőt is tudja
+
++ Admin Jogosultság lista exportálása
+
++ Admin Szervezet lista exportálása
+
++ Admin Tevékenység lista exportálása
+
++ Nem oldalazott dialog ablakok oldalzása? Talán a sok projekteknél?
+
++ ctrl+c és ctrl+v már müködik arögzítő felületen
+
++ Statisztika: Max felhasználószám
+
++ jóváhagyás default év hónap, ha még nincs, akkor ne az első legyen, hanem aktuális.
+
+V0.002
+
++ Távolét lezárás után még pipálható, esetén szöveg legyen.
+
+V.003
+
++ Staisztika: Excel és WEB statisztikában a 0:00-ra rögzített tevékenységek már nem jelennek meg.
+Minimálisan lassabb lett így a statisztika modul.
+
++ Rögzítő felületen hónapot lezárni csak akkor lehet, ha nincs 0:00 sor rögzítve.
+	+ Ha van 0:00 akkor vagy rögzíteni kell, vagy átállítani Kérem válasz-ra.
+	+ Hónap lezárásakor hibaüzenet.
+	+ Jóváhagyói lezárásnál értelemszerűen nincs ilyen! Ott 0:00 is le lehet zárni.
+	+ PDF-ben továbbra is látható, minden esetben!
+
++ Szervezet váltás mostantól csak akkor lehetséges, ha minden hónapja le van zárva a user-nek.
+ Admin fülön hibaüzenet szervezet váltáskor.
+ Szervezet váltás menete:
+	1: Felhasználó minden hónapjának lezárása és jóváhagyása.
+	2: Ha az aktuális hónaphoz rögzített, akkor minden napra: Kérem válaszon legyen rögzítve. Távollét se szabad lenni.
+	3: Értelemszerűen hó közbeni szervezet váltás tiltott.
+
++ Alábbi 'ablakoknál' már *Valami alapján is lehet keresni. (Vége csonkolt * alapértelmezett votl eddig is)
+	+ Helyettes beállításnál névre szűrésnél
+	+ Admin, user jogosultság, tevékenység hozzárendelésnél, szűrés
+	+ Admin, user jogosultság, jóváhagyási jog szervezethez hozzárendelésnél, szűrés
+	+ Admin, szervezet adminisztráció, Jóváhagyók hozzárendelése, szűrés
+	+ Admin, szervezet adminisztráció, tevékenység hozzárendelése, szűrés
+	+ Admin, tevékenység adminisztráció, szervezet hozzárendelése, szűrés
+	+ Admin, tevékenység adminisztráció, felhasználó hozzárendelése, szűrés
+
++ Rögzítő felületen a táblázat sor magasságának javítása.
+  Részletesen: Egy napra távollétet rögzítünk, majd oldal újraöltése után túl magas az adott nap sora.
+  Távollét kivétele (kipipálása) után látható a legjobban.
+
+V.004
+
++ Hónap kezelés javítása December-Január
+
++ userhez új tevékenység, lapozás nem megy :(
+ 
++ szervezet  projekt hozzárendelés porojekt típusa ottmaradt
+  - Notice: Undefined index: projekt_tipus in /srv/www/vhosts/dev-konto-portal/www/mira_dev/ajax_ful_admin_func.php on line 101
+
++ Megjegyés írás nem lehetséges lezárt hónap esetén.
+ 
++ új szervezet nélv új jóváhagyók hozzáadása keresés lapozás.
+	
++ Kérem válasz helyett Kérem válassz
+
++ Munkanap áthelyezésénél ne legyhessen törölni ha van rögzített adat arra a napra
+
+V.005
+
++ jquery.mask_1_14_16.js plugin kiváltása. 2 helye volt
+	- Admin user munkanap áthelyezés: Readonly
+	- 1 karatkeres időnél kézzel beleírom a 1: utáni 00 szöveget
+
++ jquery_ui_1_13_0k.min.js bevezetése, TAB és datapciker nélkül!
+
++ Rögzítő felülten már látható a szervezet név is.
+Helyettesnél meg a helyettes neve.
+
++ Helyettes beállításnál excel export kikapcsolása. Minek..
+
++ Oldal újratöltése ha böngésző TAB váltás történik, és akkor is ha ALT-TAB történik
+
++ Évváltás esetén legyen január
+
++ Rögzít táblában a jovahagyo mezők törlése.
+
++ Védelem. Mnetéskor megnézem, hogy le van-e zárva ez a hónap, ha igen: fopage_reopen()
+	Ez nem 2 gépes cuccnál lehet egyszerre
+	Szabadság ki-be is megcsináltam.
+
++ table.table_emre_bejovo nowrap kikapcsolása, hogy legyen sortörés hossszú projekt névnél.
+
+V.006
+
++ Megjegyzés minden nap legyen aktiv! Ne legyne sose tiltva!
+
++ Távollétet kiveszem és törlődik a megjegyzés.
+
++ Távollétet beteszem és törlődik a megjegyzés.
+
++ Megjegyzés mentésének késleltetése a WEBIR kereséshez hasonlóan
+	100ms
+
+V.007
+
++ Jóváhagyó lássa tooltip-ben a megjegyzést is ha van. Legalul. Távvolétnél is.
+
++ Jóváhagyásál a szervezethez hozzárendelt emberek lekeresése nem volt tökletes.
+	Dupla sql.
+
+V.008
+
++ Több tagvállalatos müködés Admin felüelt fejlesztése.
+
++ Több tagvállalatos müködés Jóváhagyó felületen csak az adott céghez tartozó szervezetek
+
++ Jóváhagyó tooltip ha nincs semmi: PHP hibaüzenet.
+
++ Select2 keresőmező max 30 karakter!
+
++ Jóváhagyó felület évváltás
+
++ Rögzítő és jóváhagyó felületen évváltásnál mindig az első hónap legyen
+	Ami 1, vagy kezdő év esetén a keződő hó
+
++ Statisztika évváltás
+	
++ Kezdő év és hó SQL  táblából kell venni!
+
+V.009
+
++ PDF.php összesítés hibás, ha a távollét előtti nap ki van toltve! Nincs nullázva
+
++ Rögzítő felület: Összesítés 0:00 ha távvolét bepipálásra került és ki volt töltve.
+
+V.010
+
++ PDF.php helyett /pdf
+ V0.009 visszaportolva.
+
++ PDF/index.php sima megnyitásának lekezelése, most PHP hibaüzenet.
+	Legyne inkább a nagy semmi!
+	https://dev-konto-portal.mvmh.local/mira_dev/pdf/
+	V0.009 visszaportolva.
+
++ Statisztika sugó betűméret növelés javítása.
+	Ne legyen több sorba. scrool-ba
+
++ Statisztika fül méret növelés, sugó DIV helyzete
+
+V.011
+
++ Admin szervezet statisztika. AD kód 
+	V0.010 visszaportolva.
+	
++ Szervezet ID elrejtése mindkét helyen.
++ Tevékenység ID elrejtése.
+
++ Tevékenység kiválasztása után (ha nem kéerem válassz) akkor a hozzá tartozó időn legyen a fokusz
+
++ Jóvhagyói lezárás teljesen üres hónapnál.
+	Hiaüzenet
+
++ Max felhasználók száma: CSÚSZKA FELJEBBB
+
+V.012
+
++ Rögzítő felületen napi összesítésnél tooltip-ben a 0.02 formátum megjelenítése.
+
++ 0:5-nél nincs Backpace, ha a végén áll a kurzor
+
+V.013
+
++ 0:10 Jóváhagyói felületen nem jelent meg.
+
++ 0:10 több statisztikában is hibáan jelent meg.
+
++ Olszlop név elírások (Statisztika és excel)
+
++ Költséghely kódnál és szervezet kódnál szerintem be kellene állítani a max. 8 karaktert.
+
++ Böngésző TAB váltás ne legyen újratöltve ha az Admin felületen vagyunk.
+
++ Új szervezetnél ID oszlop bentmaradt.
+
++ User összes tevékenységei Excel exportálás.
+
+V.014
+
++ Tevékenység: Oldal lépés: tooptip_proc() beállítása.
+
++ Select2 legyen bezárva böngésző TAB váltáskor.
+
++ Statisztika fülön USER lista nincs szervezethez kötve.
+	Már van.
+
++ Rögzítő felület: Tevékenység lista max 100
++ Jóváhagyó felület és Admin felületen munkanap áthelyezésénél USER lista max 100
+
+V.015
+
++ élesítéshez szükséges átalakítások
+	$GLOBALS['tesztdevmod'] space beépítése.
+	V.014 visszaportolva
+
++ Ha a tagv- tartozó kezdő év és hó nagyobb mint a mostani.
+Vagyis decemberben akarjuk használni azt, ami csak jövő januárban indul
+ V.014 visszaportolva
+
++ Szervezet költséghely módosításnál csak 8karakter legyen
+
++ PDF aljára a verziószám és Generálás ideje
+
++ Excel részletex export elírás: Jóvájagyás
+
++ Statisztika elírás: Rögzitett
+
++ Rendszer átnevezése: Munkaidő helyett: Tevékenység rögzítés
+
++ Admin oszlop átnevezás 2 helyen: Szervezet jóváhagyó
+
++ Admin jogosultság: USER_AD lehessen 17 hosszú. MVMS miatt.
+
++ USER_AD lekérdezés. több tartományos müködés MVMS miatt.
+
++ Admin jogosultság table ne lógjon ki a tabból.
+
++ Admin oszlop új oszlop jogosultság adminisztrációnál: Felettes jóváhagyója
+
++ Jóváhagyás fül átalakítása felettes jóváhagyó miatt.
+	- Összes jogosult felettes jóváhagyás.
++ Email értesítés 2. alkalommal ha van felettes jóváhagyó akkor ahhoz menjen és ne a szervezet jóváhagyójához
+
+
+V1.001
+
++ Admin tevékenység excel lista javítás, 2 sázm oszlop az első sor után mindig üres volt.
+.on('blur') eseménynél nem kell focus.
+
++ Éles verzió
+
+V1.002
+
++ Tevékenység, Felhasználó, pipát bepipálnom, hátsó ablakban nem lehet lépegetni.
+ Kivettem a gomb tiltást
+ 
++ Napi összesítés lefuttatása akkor is, ha tevékenységet keremválasz-ra rakok
+
++ 12:00 felett legyen piros színű az összesítés.
+ 
++ Tevékenység, szervezet, név szerinti keresés kezdő *-os kereséssel is
+
+V1.003
+
++ Statisztika Szervezetre szürés esetén napi összesítésnél távollét helyett :0 szerepel
+  V1.002 visszaportolva
++ Statisztika Szervezetre szürés esetén  felhasználók között Nagy Imre nincs ott
+  V1.002 visszaportolva
+ 
++ Numerikus billentyűzeten az perc megadása 
+
++ tablesorter bevezetése csak a statisztika fülre 
+ 
+V1.004
+
++ Statisztika fül szűrés sorrend változás
+
++ Admin jogosultás fül. Jóváhagyói fül és statisztika fül után ne legyen a lap újratölve.
+Csúszka elcsúszik! és a Tevékenység adminisztrácinál is.
+
++ Admin jogosultás fül.  Aljogok esetén visszaugrott az első oldalra.
+
++ link is már van tooltip
+
++ Statisztika jogosultság szervezethez kötése
+
++ rögzítő felületen az összesítésnél gyorsabb és rendesebb tooltip
+	És 1.76 helyett legyen vessző, ne pont
+
+V1.005
+
++ Tevékenység adminisztrációnálúj felvételnél nem volt leprogramozva az új hozzáadása
+ V1.004 visszaportolva.
+
++ Rögzítő felületen ESS->óra:perc konvertálás Összesítésre kattintva
+
++ jqueryui 1.13.1
+
+V1.006
+
++ Statisztikánál már az inaktív tevékenység is megjelenik.
+	V1.005 visszaportolva.
+	
++ Statisztika fülön az inaktív userek is megjelenjenek!
+
++ Tablesort rossz.
+Összes ítés pl: Banki aláírás fel_nap nem jó.
+
+
+V1.007
+
++ Statisztika (5000:12) óra sorba rendezése nem volt jó
+ 
+V1.008
+
++ Statisztika: Tevékenységes 2 típiusnál inaktiválnia a Státuszra szűrést
+ 
++ statisztika: 2 részletesnél nincs nem rögzített felhasználók.
+
+V1.009
+
++ Statisztika: Felhasználók  napi összesítésénél kétféleösszesítés van
+egész osztásos szerinti is.,
+
+V1.010
+ + Rögzítő felületen összesítésnél tevékenység összesítése
+ 
+ + Statisztikánál sorbarendezésnél óra,perc megoldása (.-ra cserélése füögvényben)
+
+V1.011
+
+
+- Inaktiválás csak akkor, ha le van zárva minden hónapja!
+ Hogy? Elő hónapok nincsenek megoldva.
+ Esetleg egy kérdés, hogy biztosan? Melyik hónapra?
+ 
+- Dátum oszlopnév helyett Dátum és Nap
+
+
+
+- Admin user jogosultság ADkonto azonosító hosszabb is lehessen (MVMS miatt)
+
+- Admin munkanap áthelyezés, figyelni, hogy ne legyen arra rögzítve.
+
+-  Email figyelmeztetés munkavállalóknak. 
+	- Minden hónap munknapján napján.
+	- Pl. 6:00 órakkor.
+	- Azoknak akik nem zárták le, hogy zárják le az adott hónapot.
+
+-  Email figyelmeztetés jóváhagyóknak
+	- Azoknak, akik nem hagyták jóvá.
+	- Többször kell időzíteni.
+		- Első munknap 
+			- 6:00
+			- 14:00

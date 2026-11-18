@@ -1,0 +1,261 @@
+<?php
+session_start();
+include_once("config_uj.php"); 
+include_once("function.php");
+include_once("function_mysql.php");
+include_once("admin/function_mysql_admin.php");
+
+login('1');
+
+if(
+(!isset($_SESSION[$GLOBALS['sessionname']]['login_ad']))
+){
+ exit;
+}
+
+if(
+(!isset($GLOBALS[$GLOBALS['sessionname']]['ful_admin']))
+or
+($GLOBALS[$GLOBALS['sessionname']]['ful_admin']=='0')
+){
+ exit;
+}
+
+if(isset( $_POST['admin_backup_terv_xlsx_letolt'] )){
+
+ switch($_POST['admin_backup_terv_xlsx_letolt']){
+  case'terv1':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv1_letolt_xlsx();
+  break;
+  case'terv2':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv2_letolt_xlsx();
+  break;
+  case'terv3_1':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv3_1_letolt_xlsx();
+  break;
+  case'terv3_1_1':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv3_1_1_letolt_xlsx();
+  break;
+  case'terv3_2':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv3_2_letolt_xlsx();
+  break;
+  case'terv3_3':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv3_3_letolt_xlsx();
+  break;
+  case'terv3':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv3_letolt_xlsx();
+  break;
+  case'terv3_ossz':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv3_ossz_letolt_xlsx();
+  break;
+  case'terv_projekt_le':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv_projekt_le();
+  break;
+  case'terv_projektszetbont_le':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv_projektszetbont_le();
+  break;
+
+  case'terv_betoltominta_szetbontas':
+   include_once('admin/ajax_ful_admin_backup_terv_xlsx_letolt.php');
+   terv_betoltominta_szetbontas();
+  break;
+ }
+
+}elseif(isset($_POST['admin_mod'])){
+ switch($_POST['admin_mod']){
+  case'muv'://2026_10_29 megforítottam, mert ha a sima admin oldal hibára futott, akkor nem került mentésre az utolsó művelet!
+   if((!isset($GLOBALS[$GLOBALS['sessionname']]['user_admin_muvelet']))or($GLOBALS[$GLOBALS['sessionname']]['user_admin_muvelet']!=$_POST['mul_ful']))//F5 esetén nem kell menteni, mert nem változott..
+	muv_letolt_ment();
+   muv_letolt();
+  break;
+  case'func':
+   include("ajax_ful_admin_func.php");
+   func_letolt();
+  break;
+  default:
+   echo "Hiba1";
+   exit;
+  break;
+ }
+}
+
+function muv_letolt_ment(){
+$tmp_mod[0]['user_admin_muvelet']=$_POST['mul_ful'];
+mod_egy_fel_tom('mira_user_ker_jog_admin',$tmp_mod[0],'user_ad',$_SESSION[$GLOBALS['sessionname']]['login_ad']);		
+$GLOBALS[$GLOBALS['sessionname']]['user_admin_muvelet']==date("Y-m-d H:i:s",time());
+}
+
+
+function muv_letolt(){
+if(isset($_POST['mul_ful'])){
+include_once("ajax_ful_admin_func.php");
+ switch($_POST['mul_ful']){
+  case'admin_user_mod':
+    include_once('admin/ajax_ful_admin_user.php');
+	admin_user_mod();
+  break;
+  case'admin_szerv_mod':
+    include_once('admin/ajax_ful_admin_szerv.php');
+    admin_szerv_mod();
+  break;
+  case'admin_proj_mod':
+    include_once('admin/ajax_ful_admin_proj.php');
+	admin_proj_mod();
+  break;
+  case'admin_arazasref_mod':
+    include_once('admin/ajax_ful_admin_arazasref.php');
+	admin_arazasref_mod();
+  break;
+  case'admin_tagv_kod_mod':
+    include_once('admin/ajax_ful_admin_tagv.php');
+	admin_tagv_kod_mod();
+  break;
+  case'admin_szolg_kod_mod':
+    include_once('admin/ajax_ful_admin_szolgkod.php');
+	admin_szolg_kod_mod();
+  break;
+  case'admin_csop_nev_mod':
+    include_once("admin/ajax_ful_admin_csop_nev.php");
+	admin_csop_nev_mod();
+  break;
+  case'admin_kat_nev_mod':
+    include_once("admin/ajax_ful_admin_kat_nev.php");
+	admin_kat_nev_mod();
+  break;
+
+  case'admin_munkanapglobal_mod':
+	include_once('admin/ajax_ful_admin_munkanapglobal.php');
+    admin_munkanapglobal_mod();
+  break;
+  case'admin_munkanapuser_mod':
+    include_once('admin/ajax_ful_admin_munkanapuser.php');
+	admin_munkanapuser_mod();
+  break;
+  case'admin_honapzaras_mod':
+    include_once('admin/ajax_ful_admin_honapzaras.php');
+	admin_honapzaras_mod();
+  break;
+  case'admin_hibajavitas_mod':
+    include_once('admin/ajax_ful_admin_hibajavitas.php');
+	admin_hibajavitas_mod();
+  break;
+  case'admin_kapcstulaj_mod':
+    include_once('admin/ajax_ful_admin_kapcstulaj.php');
+	admin_kapcstulaj_mod();
+  break;
+  case'admin_kapcstorzs_mod':
+    include_once('admin/ajax_ful_admin_kapcstorzs.php');
+	admin_kapcstorzs_mod();
+  break;
+  case'admin_kapcsossze_mod':
+    include_once('admin/ajax_ful_admin_kapcsossze.php');
+	admin_kapcsossze_mod();
+  break;
+
+  case'admin_tervezes_mod':
+    include_once('admin/ajax_ful_admin_tervezes.php');
+	admin_tervezes_mod();
+  break;
+  case'admin_tenypotlas_mod':
+    include_once('admin/ajax_ful_admin_tenypotlas.php');
+	admin_tenypotlas_mod();
+  break;
+  case'admin_tenypotlastig_mod':
+    include_once('admin/ajax_ful_admin_tenypotlas_tig.php');
+	admin_tenypotlastig_mod();
+  break;
+  case'admin_szerz_szerztipus':
+    include_once('admin/szerz/admin_szerz_szerztipus.php');
+	admin_szerz_szerztipus();
+  break;
+  case'admin_szerz_szerzalapadat':
+    include_once('admin/szerz/admin_szerz_szerzalapadat.php');
+	admin_szerz_szerzalapadat();
+  break;
+  case'admin_szerz_szerzfeltolt':
+    include_once('admin/szerz/admin_szerz_szerzfeltolt.php');
+	admin_szerz_szerzfeltolt();
+  break;
+  case'admin_szerz_tarskat':
+    include_once('admin/szerz/admin_szerz_tarskat.php');
+	admin_szerz_tarskat();
+  break;
+  case'admin_szerz_szolgcsop':
+    include_once('admin/szerz/admin_szerz_szolgcsop.php');
+	admin_szerz_szolgcsop();
+  break;
+  case'admin_szerz_elsztipus':
+    include_once('admin/szerz/admin_szerz_elsztipus.php');
+	admin_szerz_elsztipus();
+  break;
+  case'admin_szerz_nattipus':
+    include_once('admin/szerz/admin_szerz_nattipus.php');
+	admin_szerz_nattipus();
+  break;
+  case'admin_szerz_szerzusergazda':
+    include_once('admin/szerz/admin_szerz_usergazda.php');
+	admin_szerz_szerzusergazda();
+  break;
+  case'admin_szerz_szolgkapadat':
+    include_once('admin/szerz/admin_szerz_szolgkapadat.php');
+	admin_szerz_szolgkapadat();
+  break;
+  case'admin_szerz_szolgmodadat':
+    include_once('admin/szerz/admin_szerz_szolgmodadat.php');
+	admin_szerz_szolgmodadat();
+  break;
+  case'admin_szerz_tigadat_penznem':
+    include_once('admin/szerz/admin_szerz_tigadat_penznem.php');
+	admin_szerz_tigadat_penznem();
+  break;
+  case'admin_szerz_tigadat_co':
+    include_once('admin/szerz/admin_szerz_tigadat_co.php');
+	admin_szerz_tigadat_co();
+  break;
+  case'admin_szerz_tigadat_sapszam':
+    include_once('admin/szerz/admin_szerz_tigadat_sapszam.php');
+	admin_szerz_tigadat_sapszam();
+  break;
+  case'admin_szerz_tigadat_vevoazon':
+    include_once('admin/szerz/admin_szerz_tigadat_vevoazon.php');
+	admin_szerz_tigadat_vevoazon();
+  break;
+  case'admin_szerz_tigadat_nemszerz':
+    include_once('admin/szerz/admin_szerz_tigadat_nemszerz.php');
+	admin_szerz_tigadat_nemszerz();
+  break;
+  case'admin_szerz_integadat':
+    include_once('admin/szerz/admin_szerz_integadat.php');
+	admin_szerz_integadat();
+  break;
+  case'admin_kpi_szolgkod':
+    include_once('admin/szerz/admin_kpi_szolgkod.php');
+	admin_kpi_szolgkod();
+  break;
+  case'admin_kpi_tipus':
+    include_once('admin/szerz/admin_kpi_tipus.php');
+	admin_kpi_tipus();
+  break;
+  case'admin_kpi_osszekap':
+    include_once('admin/szerz/admin_kpi_osszekap.php');
+	admin_kpi_osszekap();
+  break;
+  case'admin_log':
+    include_once('admin/ajax_ful_admin_log.php');
+	admin_log();
+  break;
+}
+}
+}
+
+?>
