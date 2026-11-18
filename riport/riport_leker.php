@@ -1,0 +1,159 @@
+<?php
+//session_start();
+session_start(['read_and_close' => true]);
+//$start = microtime(true);
+//$mem_start = memory_get_peak_usage();
+include_once("../config_uj.php"); 
+//include_once("../function.php");
+include_once("../function_login.php");
+include_once("../function_mysql.php");
+login('1');
+///ini_set("pcre.jit","0");
+ini_set('max_execution_time', '60');
+ini_set('memory_limit','3G');
+//ini_set('log_errors',"off");
+require_once "../simplexlsx/xlsx_simplegen.php";
+if(
+ (isset($_POST['tipus']))and
+ ($_POST['tipus']!='')
+){
+
+$tomb_riport_aljog=keres_riport_tipusjogspan_aljog($_SESSION[$GLOBALS['sessionname']]['login_ad']);
+if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='0')and(!is_array($tomb_riport_aljog))){
+ echo '<b>Jogosultság hiba!</b>';
+ exit;
+}
+
+ switch($_POST['tipus']){
+  case'nonp':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['nonp']))){
+    include_once('riport_nonp.php');
+    riport_nonp();
+   }
+  break;
+  case'tervteny':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['tervteny']))){
+    include_once('riport_tervteny_leker.php');
+    riport_tervteny();
+   }
+  break;
+  case'teny3_1_1':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['teny3_1_1']))){
+    include_once('riport_teny311_leker.php');
+    riport_teny311();
+   }
+  break;
+  case'teny3_1_1_szervcsop':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['teny3_1_1_szervcsop']))){
+    include_once('riport_teny311_leker.php');
+    riport_teny311();
+   }
+  break;
+  case'teny3_2':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['teny3_2']))){
+    include_once('riport_teny32_leker.php');
+    riport_teny32();
+   }
+  break;
+  case'teny3_3':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['teny3_3']))){
+    include_once('riport_teny33_leker.php');
+    riport_teny33();
+   }
+  break;
+  case'teny3':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['teny3']))){
+    include_once('riport_teny3_leker.php');
+    riport_teny3();
+   }
+  break;
+  case'teny3_elteres':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['teny3_elteres']))){
+    include_once('riport_teny3_elteres_leker.php');
+    riport_teny3_elteres();
+   }
+  break;
+  case'kapcs_ossze':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['kapcs_ossze']))){
+    include_once('riport_kapcs_ossze_leker.php');
+    include_once("../function.php");
+	riport_kapcs_ossze();
+   }
+  break;
+  case'szerznyilv':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['szerznyilv']))){
+    include_once('riport_szerznyilv_leker.php');
+    riport_szerznyilv();
+   }
+  break;
+  case'szerznyilv_elo':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['szerznyilv_elo']))){
+    include_once('riport_szerznyilv_elo_leker.php');
+    riport_szerznyilv_elo();
+   }
+  break;
+  case'proj_k99':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['proj_k99']))){
+    include_once('../admin/function_mysql_admin.php');
+    include_once('../function.php');
+    include_once('riport_proj_k99_leker.php');
+    riport_proj_k99();
+   }
+  break;
+  case'proj_beszkoz':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['proj_beszkoz']))){
+    include_once('../admin/function_mysql_admin.php');
+    include_once('../function.php');
+	include_once('riport_proj_beszkoz_leker.php');
+    riport_proj_beszkoz();
+   }
+  break;
+  case'kpi_riport':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['kpi_riport']))){
+    include_once('../admin/function_mysql_admin.php');
+    include_once('../function.php');
+	include_once('riport_kpi_riport_leker.php');
+    riport_kpi_riport();
+   }
+  break;
+  case'tig_tabla':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['kpi_riport']))){
+    //include_once('../admin/function_mysql_admin.php');
+    include_once('../function.php');
+	include_once('riport_tig_tabla_leker.php');
+	include_once('riport_tig_tabla_leker_func.php');
+	include_once('riport_tig_tabla_leker_sql.php');
+    riport_tig_tabla();
+   }
+  break;
+  case'admin_user':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['admin_user']))){
+	include_once('../admin/function_mysql_admin.php');
+	include_once('../function.php');
+	include_once("../excel_export/tal/excel_export_tal_admin_userlist_keres.php");
+	excel_export_admin_userlist_keres();
+   }
+  break;
+  case'admin_szerv':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['admin_szerv']))){
+	include_once('../admin/function_mysql_admin.php');
+	include_once('../function.php');
+	include_once("../excel_export/tal/excel_export_tal_admin_szervlist_keres.php");
+	excel_export_admin_szervlist_keres();
+   }
+  break;
+  case'admin_proj':
+   if(($GLOBALS[$GLOBALS['sessionname']]['jog']['ful_riport_all']=='1')or(isset($tomb_riport_aljog['admin_proj']))){
+	include_once('../admin/function_mysql_admin.php');
+	include_once('../function.php');
+	include_once("../excel_export/tal/excel_export_tal_admin_projektlist_keres.php");
+	excel_export_admin_projektlist_keres();
+   }
+  break;
+ }
+}
+// Memóriahasználat és időmérés
+//error_log("Peak memory Legnagyobb hasznalt RAM: " . (memory_get_peak_usage() - $mem_start) / 1024 / 1024 . " MB");
+//error_log("eppen most hasznalt RAM: " . (memory_get_usage()) / 1024 / 1024 . " MB");
+//error_log("Time: " . (microtime(true) - $start) . " s");
+?>

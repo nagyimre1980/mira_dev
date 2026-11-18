@@ -1,0 +1,24 @@
+datum: 2026. 11. 09.  7:35:46,13
+
+PHP 8.5.7 (cli) (built: Jun  2 2026 21:14:36) (NTS Visual C++ 2022 x64)
+Copyright (c) The PHP Group
+Built by The PHP Group
+Zend Engine v4.5.7, Copyright (c) Zend Technologies
+    with Zend OPcache v8.5.7, Copyright (c), by Zend Technologies
+
+--- composer csomagok ---
+tecnickcom/tc-lib-barcode      2.17.3 PHP library to generate 73 types of linear, 2D and postal barcodes as SVG, P...
+tecnickcom/tc-lib-color        3.0.14 PHP library to manipulate various color representations
+tecnickcom/tc-lib-file         3.9.10 PHP library for safe low-level file access: byte-level reads, path allowlist...
+tecnickcom/tc-lib-pdf          8.84.0 PHP PDF Library
+tecnickcom/tc-lib-pdf-encrypt  2.12.2 PHP library to encrypt and decrypt PDF data
+tecnickcom/tc-lib-pdf-filter   2.11.9 PHP library to decode PDF compression and encryption filters
+tecnickcom/tc-lib-pdf-font     4.8.0  PHP library containing PDF font methods and utilities
+tecnickcom/tc-lib-pdf-graph    2.18.7 PHP library containing PDF graphic and geometric methods
+tecnickcom/tc-lib-pdf-image    3.15.3 PHP library containing PDF Image methods
+tecnickcom/tc-lib-pdf-page     4.18.1 PHP library containing PDF page formats and definitions
+tecnickcom/tc-lib-pdf-parser   3.16.7 PHP library to parse PDF documents
+tecnickcom/tc-lib-pdf-sign     2.0.10 PHP library to create and embed digital signatures (PKCS#7 / CAdES / PAdES) ...
+tecnickcom/tc-lib-unicode      3.2.3  PHP library to process UTF-8 and Unicode text
+tecnickcom/tc-lib-unicode-data 3.1.3  PHP library containing Unicode definitions
+tecnickcom/tcpdf               7.0.22 Deprecated legacy PDF engine for PHP. Use instead tecnickcom/tc-lib-pdf.

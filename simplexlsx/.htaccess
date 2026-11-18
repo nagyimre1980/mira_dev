@@ -1,0 +1,10 @@
+<Limit GET POST HEAD OPTIONS>                                                                                                                                                                                       
+Order allow,deny                                                                                                                                                                                                    
+#Allow from 10.98.33.244                                                                                                                                                                                                                                                                                                                                                                                                           
+#Order deny,allow                                                                                                                                                                                                   
+#Deny from all                                                                                                                                                                                                      
+</Limit>                                                                                                                                                                                                            
+<LimitExcept GET POST HEAD OPTIONS>                                                                                                                                                                                 
+Order deny,allow                                                                                                                                                                                                    
+Deny from all                                                                                                                                                                                                       
+</LimitExcept>
