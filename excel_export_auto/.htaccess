@@ -1,0 +1,15 @@
+<Limit GET POST HEAD OPTIONS>                                                                                                                                                                                       
+# Először tiltunk mindent, aztán engedélyezünk kivételeket
+Order Deny,Allow
+Deny from all
+
+# IPv4 localhost
+Allow from 127.0.0.1
+Allow from 10.111.1.40
+Allow from 10.98.33.244
+                                                                                                                                                                                                   
+</Limit>                                                                                                                                                                                                            
+<LimitExcept GET POST HEAD OPTIONS>                                                                                                                                                                                 
+Order deny,allow                                                                                                                                                                                                    
+Deny from all                                                                                                                                                                                                       
+</LimitExcept>
